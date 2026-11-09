@@ -36,25 +36,27 @@ function updateStepIndicator() {
     tab.classList.toggle('done', s < cur);
   });
 
+  const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
+
   // Update Rail Sub-Badges dynamically
   const railSub1 = document.getElementById('rail-sub-1');
   if (railSub1) {
     const name = FormState.data.name?.trim();
-    railSub1.textContent = name ? (name.length > 14 ? name.substring(0, 12) + '...' : name) : 'Required';
+    railSub1.textContent = name ? (name.length > 14 ? name.substring(0, 12) + '...' : name) : (isAr ? 'مطلوب' : 'Required');
     railSub1.classList.toggle('ready', Boolean(name));
   }
 
   const railSub2 = document.getElementById('rail-sub-2');
   if (railSub2) {
     const count = Object.values(FormState.data.socials || {}).filter(v => v && String(v).trim().length > 0).length;
-    railSub2.textContent = `${count} channels`;
+    railSub2.textContent = isAr ? `${count} قنوات` : `${count} channels`;
     railSub2.classList.toggle('ready', count > 0);
   }
 
   const railSub3 = document.getElementById('rail-sub-3');
   if (railSub3) {
     const count = (FormState.data.skills || []).length;
-    railSub3.textContent = `${count} skills`;
+    railSub3.textContent = isAr ? `${count} مهارات` : `${count} skills`;
     railSub3.classList.toggle('ready', count >= 3);
   }
 
@@ -62,17 +64,22 @@ function updateStepIndicator() {
   if (railSub4) {
     const pCount = (FormState.data.projects || []).length;
     const eCount = (FormState.data.experience || []).length;
-    railSub4.textContent = `${pCount} proj · ${eCount} exp`;
+    railSub4.textContent = isAr ? `${pCount} مشاريع · ${eCount} خبرة` : `${pCount} proj · ${eCount} exp`;
     railSub4.classList.toggle('ready', pCount > 0);
   }
 
   const railSub5 = document.getElementById('rail-sub-5');
   if (railSub5) {
-    const themeNames = {
+    const themeNamesEn = {
       1: 'Aether', 2: 'Terminal', 3: 'Minimal',
       4: 'Bento', 5: 'Glass', 6: 'Dark Prem', 7: 'Academic'
     };
-    railSub5.textContent = themeNames[FormState.data.theme || 1] || 'Theme 1';
+    const themeNamesAr = {
+      1: 'أثير', 2: 'ترمينال', 3: 'أنيق',
+      4: 'بنتو', 5: 'بلوري', 6: 'ليلي', 7: 'أكاديمي'
+    };
+    const curTheme = FormState.data.theme || 1;
+    railSub5.textContent = isAr ? (themeNamesAr[curTheme] || 'قالب 1') : (themeNamesEn[curTheme] || 'Theme 1');
   }
 
   // Update Studio Completeness Meter
@@ -81,7 +88,7 @@ function updateStepIndicator() {
 
     const scorePill = document.getElementById('score-pill');
     if (scorePill) {
-      scorePill.textContent = `${percent} Ready`;
+      scorePill.textContent = isAr ? `${percent} جاهز` : `${percent} Ready`;
       scorePill.classList.toggle('score-ready', ready);
     }
 
@@ -92,7 +99,7 @@ function updateStepIndicator() {
 
     const railScoreText = document.getElementById('rail-score-text');
     if (railScoreText) {
-      railScoreText.textContent = `${percent} Complete`;
+      railScoreText.textContent = isAr ? `${percent} مكتمل` : `${percent} Complete`;
     }
   }
 
@@ -106,7 +113,6 @@ function updateStepIndicator() {
   const mobilePrev = document.getElementById('mobile-btn-prev');
   const mobileNext = document.getElementById('mobile-btn-next');
   const mobileNextText = document.getElementById('mobile-next-text');
-  const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
 
   if (mobilePrev) {
     mobilePrev.disabled = cur <= 1;

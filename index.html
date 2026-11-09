@@ -41,7 +41,10 @@
             <i class="fas fa-wand-magic-sparkles"></i>
           </div>
           <div>
-            <span class="wb-brand-title">Universal Portfolio Studio</span>
+            <span class="wb-brand-title">
+              <span class="brand-full" data-i18n="app.title">Universal Portfolio Studio</span>
+              <span class="brand-short" data-i18n="app.title_short">Studio</span>
+            </span>
             <span class="wb-brand-version">v3.8 Workbench</span>
           </div>
         </a>
@@ -53,26 +56,26 @@
         <div class="wb-persona-strip">
           <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('fullstack')" title="Load Full-Stack & Cloud Preset">
             <span class="traffic-dot traffic-dot-green"></span>
-            <span>Full-Stack</span>
+            <span data-i18n="persona.fullstack">Full-Stack</span>
           </button>
           <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('cybersecurity')" title="Load Security & Bug Bounty Preset">
             <span class="traffic-dot traffic-dot-red"></span>
-            <span>AppSec / Bug Bounty</span>
+            <span data-i18n="persona.cyber">AppSec / Bug Bounty</span>
           </button>
           <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('creative')" title="Load Creative Technologist Preset">
             <span class="traffic-dot traffic-dot-amber"></span>
-            <span>Creative UI</span>
+            <span data-i18n="persona.creative">Creative UI</span>
           </button>
           <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('academic')" title="Load AI Researcher Preset">
             <span class="traffic-dot traffic-dot-cyan"></span>
-            <span>AI Researcher</span>
+            <span data-i18n="persona.academic">AI Researcher</span>
           </button>
         </div>
 
         <!-- Command Palette Trigger Button -->
         <button type="button" id="cmd-palette-trigger" class="wb-cmd-trigger" title="Open Command Palette (⌘K / Ctrl+K)">
           <i class="fas fa-terminal"></i>
-          <span>Commands</span>
+          <span data-i18n="app.commands">Commands</span>
           <span class="kbd-badge">⌘K</span>
         </button>
       </div>
@@ -150,7 +153,7 @@
           <button type="button" class="wb-rail-tab active" data-step="1">
             <span class="wb-rail-num">01</span>
             <div class="wb-rail-text">
-              <div class="wb-rail-title">Profile &amp; Identity</div>
+              <div class="wb-rail-title" data-i18n="form.step.profile_short">Profile &amp; Identity</div>
               <span class="wb-rail-sub" id="rail-sub-1">Required</span>
             </div>
           </button>
@@ -158,7 +161,7 @@
           <button type="button" class="wb-rail-tab" data-step="2">
             <span class="wb-rail-num">02</span>
             <div class="wb-rail-text">
-              <div class="wb-rail-title">Network &amp; Channels</div>
+              <div class="wb-rail-title" data-i18n="form.step.social_short">Network &amp; Channels</div>
               <span class="wb-rail-sub" id="rail-sub-2">0 channels</span>
             </div>
           </button>
@@ -166,7 +169,7 @@
           <button type="button" class="wb-rail-tab" data-step="3">
             <span class="wb-rail-num">03</span>
             <div class="wb-rail-text">
-              <div class="wb-rail-title">Technical Arsenal</div>
+              <div class="wb-rail-title" data-i18n="form.step.skills_short">Technical Arsenal</div>
               <span class="wb-rail-sub" id="rail-sub-3">0 skills</span>
             </div>
           </button>
@@ -174,7 +177,7 @@
           <button type="button" class="wb-rail-tab" data-step="4">
             <span class="wb-rail-num">04</span>
             <div class="wb-rail-text">
-              <div class="wb-rail-title">Work &amp; Credentials</div>
+              <div class="wb-rail-title" data-i18n="form.step.projects_short">Work &amp; Credentials</div>
               <span class="wb-rail-sub" id="rail-sub-4">0 proj · 0 exp</span>
             </div>
           </button>
@@ -182,7 +185,7 @@
           <button type="button" class="wb-rail-tab" data-step="5">
             <span class="wb-rail-num">05</span>
             <div class="wb-rail-text">
-              <div class="wb-rail-title">Theme &amp; Deployment</div>
+              <div class="wb-rail-title" data-i18n="form.step.theme_short">Theme &amp; Deployment</div>
               <span class="wb-rail-sub" id="rail-sub-5">Aether</span>
             </div>
           </button>
@@ -191,14 +194,14 @@
         <!-- Studio Stats / Health Card -->
         <div class="wb-rail-stats">
           <div class="wb-health-head">
-            <span class="wb-health-label">Studio Health</span>
+            <span class="wb-health-label" data-i18n="app.health_label">Studio Health</span>
             <span class="bio-counter" id="rail-score-text">0% Complete</span>
           </div>
           <div class="wb-health-bar">
             <div class="wb-health-fill" id="rail-score-fill"></div>
           </div>
           <div class="wb-rail-shortcuts">
-            <span>Palette</span>
+            <span data-i18n="app.shortcuts_label">Palette</span>
             <kbd class="kbd-badge">⌘K</kbd>
           </div>
         </div>

@@ -11,6 +11,10 @@ const I18N = {
       en: 'Universal Portfolio Studio',
       ar: 'استوديو المعارض البرمجية العالمي'
     },
+    'app.title_short': {
+      en: 'Studio',
+      ar: 'الاستوديو'
+    },
     'app.tagline': {
       en: 'v3.8 Workbench · 7 Elevated Themes · Zero-Dependency Export',
       ar: 'الإصدار 3.8 · 7 قوالب متقدمة · تصدير مستقل بدون أي تبعيات'
@@ -31,6 +35,22 @@ const I18N = {
 
     'mobile.editor': { en: 'Editor', ar: 'المحرر' },
     'mobile.preview': { en: 'Preview', ar: 'المعاينة' },
+
+    // Rail & Architectural Step Labels
+    'form.step.profile_short': { en: 'Profile & Identity', ar: 'الهوية والملف الشخصي' },
+    'form.step.social_short': { en: 'Network & Channels', ar: 'الشبكات والقنوات' },
+    'form.step.skills_short': { en: 'Technical Arsenal', ar: 'الترسانة التقنية' },
+    'form.step.projects_short': { en: 'Work & Credentials', ar: 'الأعمال والخبرات' },
+    'form.step.theme_short': { en: 'Theme & Deployment', ar: 'القالب والنشر' },
+    'app.health_label': { en: 'Studio Health', ar: 'اكتمال الاستوديو' },
+    'app.shortcuts_label': { en: 'Palette', ar: 'الأوامر' },
+    'app.commands': { en: 'Commands', ar: 'الأوامر' },
+
+    // Topbar Personas
+    'persona.fullstack': { en: 'Full-Stack', ar: 'مطور شامل' },
+    'persona.cyber': { en: 'AppSec / Bug Bounty', ar: 'أمان وثغرات' },
+    'persona.creative': { en: 'Creative UI', ar: 'واجهات إبداعية' },
+    'persona.academic': { en: 'AI Researcher', ar: 'باحث ذكاء اصطناعي' },
 
     'form.step.profile': { en: 'Profile & Identity', ar: 'الملف الشخصي والهوية' },
     'form.step.profile_desc': {

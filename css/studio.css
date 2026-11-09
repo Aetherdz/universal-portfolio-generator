@@ -892,6 +892,10 @@ html, body {
     border-right: none;
   }
 
+  body.mobile-preview-active .mobile-action-bar {
+    display: none !important;
+  }
+
   .simulator-viewport {
     padding: var(--space-2);
   }
@@ -905,9 +909,14 @@ html, body {
   }
 }
 
+/* Brand Responsive Switcher */
+.brand-short {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .wb-topbar {
-    padding: 0 var(--space-3);
+    padding: 0 var(--space-4);
   }
 
   .wb-topbar-center {
@@ -936,5 +945,68 @@ html, body {
 
   .m-step-pill {
     padding: 4px 6px;
+  }
+
+  /* Simulator Toolbar mobile adaptation */
+  .simulator-titlebar {
+    padding: 0 var(--space-4);
+    gap: var(--space-2);
+    height: 40px;
+    min-height: 40px;
+  }
+
+  .mac-traffic-lights,
+  .mock-url-bar,
+  .sim-btn[data-viewport] {
+    display: none !important;
+  }
+
+  .simulator-controls {
+    flex: 1;
+    width: 100%;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .preview-theme-dropdown {
+    flex: 1;
+    min-width: 0;
+    max-width: 190px;
+    height: 28px;
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-full {
+    display: none !important;
+  }
+
+  .brand-short {
+    display: inline-block !important;
+    font-size: 0.8125rem;
+    font-weight: 700;
+  }
+
+  .wb-topbar {
+    padding: 0 var(--space-4) !important;
+    gap: 6px !important;
+  }
+
+  .wb-topbar-left {
+    gap: 6px !important;
+  }
+
+  .wb-topbar-right {
+    gap: 5px !important;
+  }
+
+  .wb-topbar-right .btn-sm {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 0.72rem !important;
+  }
+
+  #lang-label {
+    font-size: 0.72rem;
   }
 }
