@@ -10,7 +10,7 @@ function downloadHTML() {
   const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
   try {
     const data = FormState.getData();
-    const theme = getTheme(FormState.data.theme || 3);
+    const theme = getTheme(FormState.data.theme || 1);
     const portfolioHtml = theme.render(data);
     const filename = `${data.slug || 'portfolio'}.html`;
 
@@ -30,7 +30,7 @@ async function copyHTML() {
   const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
   try {
     const data = FormState.getData();
-    const theme = getTheme(FormState.data.theme || 3);
+    const theme = getTheme(FormState.data.theme || 1);
     const portfolioHtml = theme.render(data);
 
     const ok = await Utils.copyToClipboard(portfolioHtml);
@@ -51,7 +51,7 @@ async function copyHTML() {
 function openPreviewTab() {
   try {
     const data = FormState.getData();
-    const theme = getTheme(FormState.data.theme || 3);
+    const theme = getTheme(FormState.data.theme || 1);
     const portfolioHtml = theme.render(data);
 
     const blob = new Blob([portfolioHtml], { type: 'text/html;charset=utf-8' });
@@ -71,7 +71,7 @@ async function downloadZIP() {
 
   try {
     const data = FormState.getData();
-    const theme = getTheme(FormState.data.theme || 3);
+    const theme = getTheme(FormState.data.theme || 1);
     const portfolioHtml = theme.render(data);
 
     if (typeof JSZip === 'undefined') {

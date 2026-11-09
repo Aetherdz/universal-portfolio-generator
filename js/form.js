@@ -20,10 +20,10 @@ if (typeof FormState !== 'undefined') {
   };
 }
 
-// Global hook for stepper dot clicks
+// Global hook for stepper dot & tab clicks
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.step-dot').forEach(dot => {
-    dot.addEventListener('click', function () {
+  document.querySelectorAll('.step-tab, .step-dot').forEach(tab => {
+    tab.addEventListener('click', function () {
       const step = this.dataset.step;
       if (typeof goToStep === 'function') {
         goToStep(step);

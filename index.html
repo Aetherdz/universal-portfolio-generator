@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Universal Portfolio Studio — Next-Gen Developer Portfolios</title>
-  <meta name="description" content="Build and launch world-class, high-fidelity developer portfolios with 7 elevated themes, real-time device simulator, instant GitHub Pages sync, and zero-effort exports.">
+  <title>Universal Portfolio Studio — Next-Gen Developer Architecture</title>
+  <meta name="description" content="Precision developer portfolio studio. 7 elevated themes, real-time device simulator, GitHub Pages sync, and instant zero-dependency export.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- Typography: Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Cairo -->
+  <!-- Elite Typography: Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -18,261 +18,203 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Tailwind CSS (Play CDN) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Plus Jakarta Sans', 'Cairo', 'sans-serif'],
-            display: ['Space Grotesk', 'Cairo', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            obsidian: {
-              DEFAULT: '#030712',
-              card: '#0B0F19',
-              subtle: '#111827',
-              border: 'rgba(255, 255, 255, 0.08)'
-            }
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Modular Stylesheet Bundle (Cache-Busted v2.5.0) -->
-  <link rel="stylesheet" href="css/tokens.css?v=2.5.0">
-  <link rel="stylesheet" href="css/components.css?v=2.5.0">
-  <link rel="stylesheet" href="css/studio.css?v=2.5.0">
-  <link rel="stylesheet" href="css/style.css?v=2.5.0">
+  <!-- Master Studio Stylesheet (Cache-Busted v2.6.0) -->
+  <link rel="stylesheet" href="css/style.css?v=2.6.0">
 </head>
-<body class="dark flex flex-col min-h-screen text-slate-100">
+<body class="dark">
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Notification Hub -->
   <div id="toast-container"></div>
 
-  <!-- Studio Top Navigation Header -->
-  <header class="sticky top-0 z-40 bg-white/85 dark:bg-[#030712]/90 backdrop-blur-xl border-b border-mono-200 dark:border-white/[0.08] shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Brand Identity -->
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-400 via-blue-600 to-indigo-600 flex items-center justify-center text-white text-base shadow-lg shadow-blue-500/25 ring-1 ring-white/20 flex-shrink-0">
-            <i class="fas fa-wand-magic-sparkles text-sm"></i>
-          </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="text-sm sm:text-base font-bold font-display tracking-tight text-mono-900 dark:text-white">Universal Portfolio Studio</span>
-              <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                v2.5 Pro Studio
-              </span>
-            </div>
-            <span class="text-[10px] text-mono-400 font-mono hidden sm:inline">Obsidian Architecture · 7 Elevated Themes</span>
-          </div>
+  <!-- Studio Top Navigation Bar -->
+  <nav class="studio-nav">
+    <div class="studio-nav-inner">
+      <!-- Brand Identity -->
+      <a href="./" class="brand-badge">
+        <div class="brand-icon">
+          <i class="fas fa-wand-magic-sparkles"></i>
         </div>
-
-        <!-- Header Actions -->
-        <div class="flex items-center gap-2">
-          <!-- Toggle Live Preview (Mobile & Desktop) -->
-          <button id="preview-toggle" class="btn btn-primary btn-sm flex items-center gap-1.5" title="Toggle Live Preview">
-            <i class="fas fa-eye text-xs"></i>
-            <span class="hidden sm:inline">Preview</span>
-          </button>
-
-          <!-- Language Toggle -->
-          <button id="lang-toggle" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3" title="Switch Language">
-            <i class="fas fa-globe text-blue-400 text-xs"></i>
-            <span id="lang-label">عربي</span>
-          </button>
-
-          <!-- Theme Mode Toggle -->
-          <button id="theme-toggle" class="btn btn-secondary btn-sm btn-icon" title="Toggle dark mode" aria-label="Toggle dark mode">
-            <i class="fas fa-moon text-xs"></i>
-          </button>
+        <div>
+          <div class="brand-text-title">Universal Portfolio Studio</div>
+          <div class="brand-text-sub">v2.6 Precision Architecture · 7 Elevated Themes</div>
         </div>
-      </div>
-    </div>
-  </header>
+      </a>
 
-  <!-- Studio Command Ribbon / Instant Persona Launcher -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 w-full">
-    <div class="flex items-center justify-between mb-1.5">
-      <span class="text-[11px] font-bold text-mono-400 uppercase tracking-wider flex items-center gap-1.5">
-        <i class="fas fa-bolt text-amber-400"></i>
-        <span>Instant Persona Presets</span>
-      </span>
-      <span class="text-[10px] text-mono-500 hidden sm:inline">Click any role to load complete portfolio data</span>
-    </div>
+      <!-- Quick Nav Actions -->
+      <div class="nav-actions">
+        <!-- Quick Preview Toggle (Mobile Drawer) -->
+        <button id="preview-toggle" class="btn btn-secondary btn-sm lg:hidden" title="Toggle Live Preview">
+          <i class="fas fa-eye text-cyan-400"></i>
+          <span>Preview</span>
+        </button>
 
-    <div class="persona-launchpad">
-      <button type="button" class="persona-chip" onclick="FormState.loadPersona('fullstack')">
-        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-        <span>💻 Full-Stack & Cloud</span>
-      </button>
-      <button type="button" class="persona-chip" onclick="FormState.loadPersona('cybersecurity')">
-        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-        <span>🛡️ Security & Bug Bounty</span>
-      </button>
-      <button type="button" class="persona-chip" onclick="FormState.loadPersona('creative')">
-        <span class="w-2 h-2 rounded-full bg-violet-500"></span>
-        <span>🎨 Creative & Bento UI</span>
-      </button>
-      <button type="button" class="persona-chip" onclick="FormState.loadPersona('academic')">
-        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-        <span>🎓 AI Researcher & Academic</span>
-      </button>
-    </div>
-  </section>
+        <!-- Language Switcher -->
+        <button id="lang-toggle" class="btn btn-secondary btn-sm" title="Switch Language">
+          <i class="fas fa-globe text-blue-400 text-xs"></i>
+          <span id="lang-label">عربي</span>
+        </button>
 
-  <!-- Segmented Stepper Indicator -->
-  <div id="step-indicator" class="max-w-7xl mx-auto px-4 sm:px-6 py-2 w-full">
-    <div class="stepper-container">
-      <div class="step-dot active" data-step="1">
-        <i class="fas fa-user"></i>
-        <span class="step-label">1. Profile</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="2">
-        <i class="fas fa-share-nodes"></i>
-        <span class="step-label">2. Social</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="3">
-        <i class="fas fa-code"></i>
-        <span class="step-label">3. Skills</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="4">
-        <i class="fas fa-folder-open"></i>
-        <span class="step-label">4. Projects</span>
-      </div>
-      <div class="step-line"></div>
-      <div class="step-dot" data-step="5">
-        <i class="fas fa-palette"></i>
-        <span class="step-label">5. Theme</span>
+        <!-- Theme Mode Toggle -->
+        <button id="theme-toggle" class="btn btn-secondary btn-sm btn-icon" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
+          <i class="fas fa-sun text-amber-400 text-xs"></i>
+        </button>
       </div>
     </div>
+  </nav>
+
+  <!-- Instant Persona Launchpad -->
+  <div class="persona-strip">
+    <span class="persona-strip-label">
+      <i class="fas fa-bolt text-amber-400"></i>
+      <span>Fast Presets:</span>
+    </span>
+    <button type="button" class="persona-btn" onclick="FormState.loadPersona('fullstack')">
+      <span class="traffic-dot traffic-dot-green"></span>
+      <span>💻 Full-Stack & Cloud</span>
+    </button>
+    <button type="button" class="persona-btn" onclick="FormState.loadPersona('cybersecurity')">
+      <span class="traffic-dot traffic-dot-red"></span>
+      <span>🛡️ Security & Bug Bounty</span>
+    </button>
+    <button type="button" class="persona-btn" onclick="FormState.loadPersona('creative')">
+      <span class="traffic-dot traffic-dot-amber"></span>
+      <span>🎨 Creative & Bento UI</span>
+    </button>
+    <button type="button" class="persona-btn" onclick="FormState.loadPersona('academic')">
+      <span class="traffic-dot traffic-dot-green"></span>
+      <span>🎓 AI Researcher & Academic</span>
+    </button>
   </div>
 
-  <!-- Main Studio Workspace (Split-Screen Builder & Live Simulator) -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-4 pb-28 sm:pb-14 flex-1 w-full">
-    <div class="studio-grid">
+  <!-- Main Split Studio Canvas -->
+  <main class="studio-canvas">
 
-      <!-- Left Column: Builder Form Studio -->
-      <div id="form-panel" class="studio-builder-pane">
-        <div class="frosted-card p-4 sm:p-7">
-          <div id="form-container">
-            <!-- Rendered dynamically by js/form/ modules -->
-          </div>
+    <!-- Left Column: The Blueprint Editor -->
+    <div class="blueprint-card" id="form-panel">
+      <!-- High-Craft Step Stepper -->
+      <div class="blueprint-stepper" id="step-indicator">
+        <button type="button" class="step-tab active" data-step="1">
+          <i class="fas fa-user"></i>
+          <span>1. Profile</span>
+        </button>
+        <button type="button" class="step-tab" data-step="2">
+          <i class="fas fa-share-nodes"></i>
+          <span>2. Socials</span>
+        </button>
+        <button type="button" class="step-tab" data-step="3">
+          <i class="fas fa-code"></i>
+          <span>3. Tech Stack</span>
+        </button>
+        <button type="button" class="step-tab" data-step="4">
+          <i class="fas fa-folder-open"></i>
+          <span>4. Projects</span>
+        </button>
+        <button type="button" class="step-tab" data-step="5">
+          <i class="fas fa-palette"></i>
+          <span>5. Theme</span>
+        </button>
+      </div>
+
+      <!-- Step Content Area -->
+      <div class="blueprint-content" id="form-container">
+        <!-- Injected dynamically by js/form/ step modules -->
+      </div>
+    </div>
+
+    <!-- Right Column: Live Interactive Device Frame Simulator -->
+    <div class="simulator-card hidden lg:flex" id="preview-panel">
+      <!-- Titlebar Mockup -->
+      <div class="simulator-titlebar">
+        <div class="mac-traffic-lights">
+          <span class="traffic-dot traffic-dot-red"></span>
+          <span class="traffic-dot traffic-dot-amber"></span>
+          <span class="traffic-dot traffic-dot-green"></span>
+        </div>
+
+        <div class="mock-url-bar" id="simulator-url">
+          <i class="fas fa-lock text-[10px] text-emerald-400"></i>
+          <span>https://developer.studio/portfolio</span>
+        </div>
+
+        <div class="simulator-controls">
+          <button type="button" class="sim-btn active" data-viewport="desktop" title="Desktop view">
+            <i class="fas fa-desktop"></i>
+          </button>
+          <button type="button" class="sim-btn" data-viewport="tablet" title="Tablet view">
+            <i class="fas fa-tablet-alt"></i>
+          </button>
+          <button type="button" class="sim-btn" data-viewport="mobile" title="Mobile view">
+            <i class="fas fa-mobile-alt"></i>
+          </button>
+          <button type="button" id="preview-newtab" class="sim-btn text-blue-400" title="Open preview in new tab">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+          </button>
+          <button type="button" id="preview-close" class="sim-btn text-rose-400 lg:hidden" title="Close drawer">
+            <i class="fas fa-times"></i>
+          </button>
         </div>
       </div>
 
-      <!-- Right Column: Live Interactive Device Frame Simulator -->
-      <div id="preview-panel" class="studio-preview-pane hidden lg:block">
-        <div class="preview-card-shell sticky top-20">
-          
-          <!-- Mac Window Titlebar Mockup -->
-          <div class="preview-titlebar">
-            <div class="window-dots">
-              <span class="window-dot window-dot-red"></span>
-              <span class="window-dot window-dot-amber"></span>
-              <span class="window-dot window-dot-green"></span>
-              <span class="text-[11px] font-mono text-mono-400 font-semibold uppercase tracking-wider ml-2">Live Simulator</span>
-            </div>
-
-            <!-- Viewport Switcher -->
-            <div class="flex items-center gap-1">
-              <button type="button" class="viewport-btn active" data-viewport="desktop" title="Desktop view">
-                <i class="fas fa-desktop"></i>
-              </button>
-              <button type="button" class="viewport-btn" data-viewport="tablet" title="Tablet view">
-                <i class="fas fa-tablet-alt"></i>
-              </button>
-              <button type="button" class="viewport-btn" data-viewport="mobile" title="Mobile view">
-                <i class="fas fa-mobile-alt"></i>
-              </button>
-              <button type="button" id="preview-newtab" class="viewport-btn text-blue-400" title="Open in new window">
-                <i class="fas fa-arrow-up-right-from-square"></i>
-              </button>
-              <button type="button" id="preview-close" class="viewport-btn text-rose-400 lg:hidden" title="Close preview">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- URL Mockup Bar -->
-          <div class="px-3 py-1.5 bg-black/40 border-b border-white/[0.06] flex items-center gap-2">
-            <i class="fas fa-lock text-[10px] text-emerald-400"></i>
-            <span class="text-[11px] font-mono text-mono-400 truncate" id="simulator-url">https://zaik.dev/portfolio</span>
-          </div>
-
-          <!-- Live Preview Sandbox Iframe -->
-          <div id="preview-wrapper" class="desktop flex-1">
-            <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
-          </div>
-        </div>
+      <!-- Live Preview Iframe Sandbox -->
+      <div class="simulator-viewport desktop" id="preview-wrapper">
+        <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
       </div>
     </div>
   </main>
 
   <!-- Mobile Sticky Bottom Action Bar -->
-  <nav id="mobile-action-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-[#030712]/95 backdrop-blur-xl border-t border-mono-200 dark:border-white/[0.08] p-3 sm:hidden shadow-2xl safe-area-bottom">
-    <div class="flex items-center gap-2 max-w-md mx-auto">
-      <button id="mobile-btn-prev" type="button" class="btn btn-secondary flex-1 py-3 text-xs" onclick="prevStep()">
+  <div class="mobile-action-bar sm:hidden" id="mobile-action-bar">
+    <div style="display:flex;align-items:center;gap:0.5rem;max-width:480px;margin:0 auto">
+      <button id="mobile-btn-prev" type="button" class="btn btn-secondary" style="flex:1;padding:0.75rem" onclick="prevStep()">
         <i class="fas fa-arrow-left text-xs"></i>
-        <span data-i18n="btn.prev">Back</span>
+        <span>Back</span>
       </button>
-      <button id="mobile-btn-preview" type="button" class="btn btn-secondary px-3.5 py-3 text-xs" title="Live Preview">
-        <i class="fas fa-eye text-sm text-blue-400"></i>
+      <button id="mobile-btn-preview" type="button" class="btn btn-secondary" style="padding:0.75rem 1rem" title="Live Preview">
+        <i class="fas fa-eye text-blue-400"></i>
       </button>
-      <button id="mobile-btn-next" type="button" class="btn btn-primary flex-[2] py-3 text-xs" onclick="nextStep()">
-        <span id="mobile-next-text" data-i18n="btn.next">Next Step</span>
-        <i id="mobile-next-icon" class="fas fa-arrow-right text-xs"></i>
+      <button id="mobile-btn-next" type="button" class="btn btn-primary" style="flex:2;padding:0.75rem" onclick="nextStep()">
+        <span id="mobile-next-text">Next</span>
+        <i class="fas fa-arrow-right text-xs"></i>
       </button>
     </div>
-  </nav>
+  </div>
 
-  <!-- Core Libraries -->
+  <!-- Production Dependencies -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
-  <!-- System Modules (Cache-Busted v2.5.0) -->
-  <script src="js/i18n.js?v=2.5.0"></script>
-  <script src="js/utils.js?v=2.5.0"></script>
-  <script src="js/design-tokens.js?v=2.5.0"></script>
+  <!-- Modular Utilities & System Tokens -->
+  <script src="js/i18n.js?v=2.6.0"></script>
+  <script src="js/utils.js?v=2.6.0"></script>
+  <script src="js/design-tokens.js?v=2.6.0"></script>
 
-  <!-- Modular Theme System -->
-  <script src="js/themes/registry.js?v=2.5.0"></script>
-  <script src="js/themes/aether.js?v=2.5.0"></script>
-  <script src="js/themes/terminal.js?v=2.5.0"></script>
-  <script src="js/themes/minimal.js?v=2.5.0"></script>
-  <script src="js/themes/bento.js?v=2.5.0"></script>
-  <script src="js/themes/glassmorphic.js?v=2.5.0"></script>
-  <script src="js/themes/dark-premium.js?v=2.5.0"></script>
-  <script src="js/themes/academic.js?v=2.5.0"></script>
-  <script src="js/themes.js?v=2.5.0"></script>
+  <!-- Modular 7-Theme Architecture -->
+  <script src="js/themes/registry.js?v=2.6.0"></script>
+  <script src="js/themes/aether.js?v=2.6.0"></script>
+  <script src="js/themes/terminal.js?v=2.6.0"></script>
+  <script src="js/themes/minimal.js?v=2.6.0"></script>
+  <script src="js/themes/bento.js?v=2.6.0"></script>
+  <script src="js/themes/glassmorphic.js?v=2.6.0"></script>
+  <script src="js/themes/dark-premium.js?v=2.6.0"></script>
+  <script src="js/themes/academic.js?v=2.6.0"></script>
+  <script src="js/themes.js?v=2.6.0"></script>
 
-  <!-- Modular Form Step Architecture -->
-  <script src="js/form/state.js?v=2.5.0"></script>
-  <script src="js/form/step1-profile.js?v=2.5.0"></script>
-  <script src="js/form/step2-socials.js?v=2.5.0"></script>
-  <script src="js/form/step3-skills.js?v=2.5.0"></script>
-  <script src="js/form/step4-projects.js?v=2.5.0"></script>
-  <script src="js/form/step5-theme.js?v=2.5.0"></script>
-  <script src="js/form/actions.js?v=2.5.0"></script>
-  <script src="js/form.js?v=2.5.0"></script>
+  <!-- Modular Form Steps Architecture -->
+  <script src="js/form/state.js?v=2.6.0"></script>
+  <script src="js/form/step1-profile.js?v=2.6.0"></script>
+  <script src="js/form/step2-socials.js?v=2.6.0"></script>
+  <script src="js/form/step3-skills.js?v=2.6.0"></script>
+  <script src="js/form/step4-projects.js?v=2.6.0"></script>
+  <script src="js/form/step5-theme.js?v=2.6.0"></script>
+  <script src="js/form/actions.js?v=2.6.0"></script>
+  <script src="js/form.js?v=2.6.0"></script>
 
-  <!-- Preview, Export & Orchestration -->
-  <script src="js/preview.js?v=2.5.0"></script>
-  <script src="js/github.js?v=2.5.0"></script>
-  <script src="js/export.js?v=2.5.0"></script>
-  <script src="js/app.js?v=2.5.0"></script>
+  <!-- Preview Engine, GitHub Sync & Master Orchestrator -->
+  <script src="js/preview.js?v=2.6.0"></script>
+  <script src="js/github.js?v=2.6.0"></script>
+  <script src="js/export.js?v=2.6.0"></script>
+  <script src="js/app.js?v=2.6.0"></script>
 </body>
 </html>

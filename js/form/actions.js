@@ -27,19 +27,19 @@ function renderCurrentStep() {
  * Update the Stepper UI
  */
 function updateStepIndicator() {
-  const dots = document.querySelectorAll('.step-dot');
-  const lines = document.querySelectorAll('.step-line');
+  const tabs = document.querySelectorAll('.step-tab, .step-dot');
   const cur = FormState.currentStep;
 
-  dots.forEach(dot => {
-    const s = parseInt(dot.dataset.step, 10);
-    dot.classList.toggle('active', s === cur);
-    dot.classList.toggle('done', s < cur);
-    if (s === cur && typeof dot.scrollIntoView === 'function') {
-      try { dot.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
+  tabs.forEach(tab => {
+    const s = parseInt(tab.dataset.step, 10);
+    tab.classList.toggle('active', s === cur);
+    tab.classList.toggle('done', s < cur);
+    if (s === cur && typeof tab.scrollIntoView === 'function') {
+      try { tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); } catch (e) {}
     }
   });
 
+  const lines = document.querySelectorAll('.step-line');
   lines.forEach((line, i) => {
     line.classList.toggle('done', cur > i + 1);
   });

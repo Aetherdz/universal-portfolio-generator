@@ -6,10 +6,10 @@ let _previewTimeout = null;
 let _previewExpanded = false;
 
 function initPreview() {
-  // Viewport switcher buttons
-  document.querySelectorAll('.viewport-btn').forEach(btn => {
+  // Viewport switcher buttons (desktop / tablet / mobile)
+  document.querySelectorAll('.sim-btn[data-viewport], .viewport-btn[data-viewport]').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.viewport-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.sim-btn[data-viewport], .viewport-btn[data-viewport]').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const vp = btn.dataset.viewport;
@@ -64,7 +64,8 @@ function renderPreview() {
     try {
       if (typeof FormState === 'undefined' || typeof getTheme !== 'function') return;
       const data = FormState.getData();
-      const theme = getTheme(FormState.data.theme || 3);
+      const theme = (typeof getTheme === 'function' ? getTheme(FormState.data.theme || 1) : null) || (typeof THEMES !== 'undefined' ? THEMES[0] : null);
+      if (!theme || typeof theme.render !== 'function') return;
       const html = theme.render(data);
 
       const frame = document.getElementById('preview-frame');
