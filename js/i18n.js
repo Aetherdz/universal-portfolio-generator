@@ -1,5 +1,6 @@
 /* =============================================
    i18n.js — Arabic / English Translation System
+   Universal Portfolio Generator — Elite Edition
    ============================================= */
 const I18N = {
   current: 'en',
@@ -7,109 +8,153 @@ const I18N = {
   strings: {
     'app.title': {
       en: 'Universal Portfolio Generator',
-      ar: 'أداة إنشاء المحفظة الشخصية'
+      ar: 'أداة إنشاء المحفظة الشخصية الاحترافية'
     },
     'app.step1': { en: 'Profile', ar: 'الملف الشخصي' },
     'app.step2': { en: 'Social', ar: 'التواصل الاجتماعي' },
     'app.step3': { en: 'Skills', ar: 'المهارات' },
     'app.step4': { en: 'Projects', ar: 'المشاريع' },
-    'app.step5': { en: 'Theme', ar: 'القالب' },
+    'app.step5': { en: 'Theme', ar: 'القالب والمظهر' },
+
+    'btn.demo': { en: 'Load Demo', ar: 'بيانات تجريبية' },
+    'btn.clear': { en: 'Reset', ar: 'إعادة ضبط' },
+
     'form.profile.title': { en: 'Personal Information', ar: 'المعلومات الشخصية' },
     'form.profile.fullName': { en: 'Full Name *', ar: 'الاسم الكامل *' },
-    'form.profile.bio': { en: 'Bio / Tagline', ar: 'نبذة تعريفية' },
-    'form.profile.role': { en: 'Primary Role *', ar: 'المسمى الوظيفي *' },
-    'form.profile.email': { en: 'Email', ar: 'البريد الإلكتروني' },
-    'form.profile.location': { en: 'Location', ar: 'الموقع' },
+    'form.profile.bio': { en: 'Bio / Tagline', ar: 'نبذة تعريفية سريعة' },
+    'form.profile.role': { en: 'Primary Role *', ar: 'المسمى المهني *' },
+    'form.profile.email': { en: 'Email Address', ar: 'البريد الإلكتروني' },
+    'form.profile.location': { en: 'Location / Country', ar: 'الدولة / الموقع' },
     'form.profile.photo': { en: 'Profile Photo', ar: 'الصورة الشخصية' },
-    'form.profile.placeholder.name': { en: 'e.g. John Doe', ar: 'مثال: أحمد علي' },
-    'form.profile.placeholder.bio': { en: 'Full-stack developer & security researcher', ar: 'مطور ويب وباحث أمني' },
+    'form.profile.placeholder.name': { en: 'e.g. Alex Morgan', ar: 'مثال: أحمد عبد الله' },
+    'form.profile.placeholder.bio': { en: 'Passionate developer building resilient systems and scalable experiences.', ar: 'مهندس برمجيات وباحث أمني شغوف ببناء أنظمة موثوقة وعالية الأداء.' },
+
     'form.role.softwareengineer': { en: 'Software Engineer', ar: 'مهندس برمجيات' },
     'form.role.securityresearcher': { en: 'Security Researcher', ar: 'باحث أمني' },
     'form.role.bugbountyhunter': { en: 'Bug Bounty Hunter', ar: 'صياد ثغرات' },
     'form.role.techfounder': { en: 'Tech Founder', ar: 'مؤسس تقني' },
-    'form.role.uiuxdesigner': { en: 'UI/UX Designer', ar: 'مصمم واجهات' },
-    'form.role.datascientist': { en: 'Data Scientist', ar: 'عالم بيانات' },
-    'form.social.title': { en: 'Social Links', ar: 'حساباتي' },
-    'form.social.subtitle': { en: 'Add your online presence links', ar: 'أضف روابط حضورك الرقمي' },
-    'form.education.title': { en: 'Education', ar: 'المؤهلات العلمية' },
+    'form.role.uiuxdesigner': { en: 'UI/UX Designer', ar: 'مصمم واجهات وتجربة مستخدم' },
+    'form.role.datascientist': { en: 'Data Scientist', ar: 'عالم بيانات وذكاء اصطناعي' },
+
+    'form.social.title': { en: 'Online Presence & Social Links', ar: 'الحسابات وروابط التواصل' },
+    'form.social.subtitle': { en: 'Connect your developer and professional channels for instant networking', ar: 'اربط حساباتك التقنية والمهنية ليتمكن الزوار من التواصل معك مباشرة' },
+
+    'form.education.title': { en: 'Education & Degrees', ar: 'التعليم والشهادات' },
     'form.education.add': { en: 'Add Degree', ar: 'إضافة مؤهل' },
     'form.education.degree': { en: 'Degree / Major', ar: 'الشهادة / التخصص' },
-    'form.education.school': { en: 'Institution', ar: 'الجهة التعليمية' },
+    'form.education.school': { en: 'Institution / University', ar: 'الجامعة أو المعهد' },
     'form.education.year': { en: 'Year', ar: 'السنة' },
-    'form.bugbounty.title': { en: 'Bug Bounty', ar: 'صيد الثغرات' },
+
+    'form.bugbounty.title': { en: 'Bug Bounty & Security', ar: 'منصات صيد الثغرات' },
     'form.bugbounty.add': { en: 'Add Platform', ar: 'إضافة منصة' },
-    'form.bugbounty.username': { en: 'Username / Profile', ar: 'اسم المستخدم' },
+    'form.bugbounty.username': { en: 'Username / Handle', ar: 'اسم المستخدم أو المعرف' },
+
     'form.skills.title': { en: 'Skills & Technologies', ar: 'المهارات والتقنيات' },
-    'form.skills.search': { en: 'Search skills...', ar: 'ابحث عن مهارة...' },
-    'form.projects.title': { en: 'Projects / Work', ar: 'المشاريع / الأعمال' },
+    'form.skills.search': { en: 'Search 75+ skills...', ar: 'ابحث في أكثر من 75 مهارة...' },
+
+    'form.projects.title': { en: 'Featured Projects', ar: 'أبرز المشاريع والأعمال' },
     'form.projects.add': { en: '+ Add Project', ar: '+ إضافة مشروع' },
-    'form.projects.name': { en: 'Project Name', ar: 'اسم المشروع' },
-    'form.projects.desc': { en: 'Description', ar: 'الوصف' },
-    'form.projects.tags': { en: 'Tags (comma separated)', ar: 'وسوم (مفصولة بفواصل)' },
-    'form.projects.url': { en: 'Project URL', ar: 'رابط المشروع' },
-    'form.theme.title': { en: 'Choose Your Theme', ar: 'اختر قالبك' },
-    'form.theme.select': { en: 'Select a theme for your portfolio', ar: 'اختر قالباً لبورتفوليو الخاص بك' },
-    'theme.1': { en: 'Aether', ar: 'أثير' },
-    'theme.2': { en: 'Terminal', ar: 'سطر الأوامر' },
-    'theme.3': { en: 'Minimal', ar: 'أنيق' },
-    'theme.4': { en: 'Bento Grid', ar: 'شبكي' },
-    'theme.5': { en: 'Glassmorphic', ar: 'بلوري' },
-    'theme.6': { en: 'Dark Premium', ar: 'ليلي' },
-    'theme.7': { en: 'Academic', ar: 'أكاديمي' },
-    'form.controls.glass': { en: 'Glassmorphism', ar: 'الشفافية الزجاجية' },
-    'form.controls.animations': { en: 'Animations', ar: 'الحركة' },
-    'form.controls.contact': { en: 'Contact Form', ar: 'نموذج الاتصال' },
-    'form.controls.github': { en: 'GitHub Sync', ar: 'مزامنة GitHub' },
-    'form.controls.enableContact': { en: 'Enable contact form', ar: 'تفعيل نموذج الاتصال' },
-    'form.controls.sync': { en: 'Sync Repos', ar: 'مزامنة المستودعات' },
-    'form.controls.deploy': { en: 'Deploy', ar: 'نشر' },
-    'form.controls.blur': { en: 'Blur', ar: 'الضبابية' },
+    'form.projects.name': { en: 'Project Title', ar: 'اسم المشروع' },
+    'form.projects.desc': { en: 'Description & Impact', ar: 'نبذة عن المشروع وأهميته' },
+    'form.projects.tags': { en: 'Tech Stack / Tags (comma separated)', ar: 'التقنيات المستخدمة (مفصولة بفواصل)' },
+    'form.projects.url': { en: 'Project URL (Demo / Repo)', ar: 'رابط المشروع أو الكود' },
+
+    'form.theme.title': { en: 'Select Your Signature Theme', ar: 'اختر قالبك المفضل' },
+    'form.theme.select': { en: 'Pick a high-fidelity aesthetic for your generated portfolio', ar: 'اختر تصميماً احترافياً يعبر عن شخصيتك وخبراتك' },
+
+    'theme.1': { en: 'Aether (Futuristic)', ar: 'أثير (مستقبلي نيون)' },
+    'theme.2': { en: 'Terminal (Hacker CLI)', ar: 'ترمينال (سطر الأوامر)' },
+    'theme.3': { en: 'Minimal (Swiss Modern)', ar: 'أنيق (سويسري بسيط)' },
+    'theme.4': { en: 'Bento Grid (Linear Modular)', ar: 'بنتو (شبكة تفاعلية)' },
+    'theme.5': { en: 'Glassmorphic (Frosted Aura)', ar: 'بلوري (زجاجي فاخر)' },
+    'theme.6': { en: 'Dark Premium (Cyber Midnight)', ar: 'ليلي فاخر (مظلم متألق)' },
+    'theme.7': { en: 'Academic (Scholar CV)', ar: 'أكاديمي (سيرة علمية)' },
+
+    'form.controls.palette': { en: 'Color Palette', ar: 'نظام الألوان' },
+    'form.controls.font': { en: 'Typography Font', ar: 'نوع الخط' },
+    'form.controls.glass': { en: 'Glassmorphism Controls', ar: 'تأثير الزجاج الشفاف' },
+    'form.controls.animations': { en: 'Page Animations', ar: 'التأثيرات الحركية' },
+    'form.controls.contact': { en: 'Contact Form Section', ar: 'نموذج التواصل السريع' },
+    'form.controls.enableContact': { en: 'Enable interactive contact section', ar: 'تفعيل قسم ونموذج المراسلة' },
+    'form.controls.github': { en: 'GitHub Repositories Sync', ar: 'مزامنة مستودعات GitHub' },
+    'form.controls.githubDesc': { en: 'Instantly pull your top GitHub repositories into your projects list', ar: 'استيراد أفضل مستودعاتك البرمجية من GitHub وإضافتها لمشاريعك بضغطة زر' },
+    'form.controls.githubPlaceholder': { en: 'GitHub Username or Personal Access Token (ghp_...)', ar: 'اسم المستخدم أو الرمز الشخصي (ghp_...)' },
+    'form.controls.tokenNote': { en: 'Public repos work with username alone! Private repos require token with repo scope. Tokens are never stored.', ar: 'المستودعات العامة تعمل باسم المستخدم فقط! الرمز الشخصي لا يُحفظ أبداً ويبقى في ذاكرة المتصفح.' },
+    'form.controls.sync': { en: 'Sync GitHub Repos', ar: 'مزامنة المستودعات' },
+    'form.controls.deploy': { en: 'Deploy to GitHub', ar: 'نشر على GitHub' },
+    'form.controls.blur': { en: 'Blur', ar: 'درجة الضبابية' },
     'form.controls.opacity': { en: 'Opacity', ar: 'الشفافية' },
-    'form.controls.radius': { en: 'Radius', ar: 'الانحناء' },
-    'form.controls.githubDesc': { en: 'Import your GitHub repos as portfolio projects — free hosting included', ar: 'استورد مستودعات GitHub كمشاريع — استضافة مجانية' },
-    'form.controls.githubPlaceholder': { en: 'GitHub Personal Access Token (ghp_...)', ar: 'الرمز الشخصي GitHub (ghp_...)' },
-    'form.controls.tokenNote': { en: 'Token never saved — stays in browser memory. Requires repo scope.', ar: 'الرمز لا يُحفظ — يبقى في ذاكرة المتصفح. يتطلب صلاحية repo.' },
-    'btn.next': { en: 'Next →', ar: 'التالي ←' },
-    'btn.prev': { en: '← Back', ar: '→ السابق' },
-    'btn.finish': { en: 'Generate', ar: 'إنشاء' },
+    'form.controls.radius': { en: 'Radius', ar: 'استدارة الحواف' },
+
+    'btn.next': { en: 'Next Step →', ar: 'الخطوة التالية ←' },
+    'btn.prev': { en: '← Previous', ar: '→ السابق' },
+    'btn.finish': { en: 'Generate Portfolio ✨', ar: 'إنشاء الموقع ✨' },
+
+    'modal.generate.title': { en: 'Ready to Generate Your Portfolio!', ar: 'جاهز لإنشاء موقعك الشخصي!' },
+    'modal.generate.desc': { en: 'Your responsive, secure portfolio will be prepared for export & deployment.', ar: 'سيتم بناء موقعك المتجاوب والآمن بالكامل ليكون جاهزاً للتحميل والنشر المباشر.' },
+    'modal.cancel': { en: 'Keep Editing', ar: 'متابعة التعديل' },
+    'modal.generate.btn': { en: 'Build Now!', ar: 'إنشاء الآن!' },
+
     'export.deploy': { en: 'Deploy to GitHub Pages', ar: 'نشر على GitHub Pages' },
-    'export.zip': { en: 'Download ZIP', ar: 'تحميل ZIP' },
-    'export.success': { en: 'Portfolio ready!', ar: 'البورتفوليو جاهز!' },
-    'export.saveConfig': { en: 'Export Config', ar: 'تصدير الإعدادات' },
-    'export.loadConfig': { en: 'Import Config', ar: 'استيراد الإعدادات' },
-    'export.patLabel': { en: 'GitHub Token', ar: 'رمز GitHub الشخصي' },
-    'export.patNote': { en: 'Requires repo scope. Never stored — stays in browser memory only.', ar: 'يتطلب صلاحية repo. لا يُحفظ — يبقى في ذاكرة المتصفح فقط.' },
-    'app.preview': { en: 'Preview', ar: 'معاينة' },
-    'loading.generating': { en: 'Generating your portfolio...', ar: 'جارٍ إنشاء البورتفوليو...' },
-    'loading.deploying': { en: 'Deploying to GitHub Pages...', ar: 'جارٍ النشر على GitHub Pages...' },
-    'loading.zipping': { en: 'Creating ZIP archive...', ar: 'جارٍ إنشاء الملف المضغوط...' },
-    'success.deployed': { en: 'Deployed successfully!', ar: 'تم النشر بنجاح!' },
-    'success.zipped': { en: 'ZIP downloaded!', ar: 'تم تحميل الملف!' },
-    'success.configSaved': { en: 'Config exported!', ar: 'تم تصدير الإعدادات!' },
-    'success.configLoaded': { en: 'Config imported!', ar: 'تم استيراد الإعدادات!' },
-    'error.patRequired': { en: 'Please enter your GitHub PAT first.', ar: 'الرجاء إدخال رمز GitHub PAT أولاً.' },
-    'error.deployFailed': { en: 'Deployment failed. Check your PAT.', ar: 'فشل النشر. تحقق من الرمز.' },
-    'error.fillRequired': { en: 'Please fill in all required fields (*).', ar: 'الرجاء تعبئة جميع الحقول الإلزامية (*).' },
+    'export.zip': { en: 'Download Complete ZIP', ar: 'تحميل ملف ZIP كامل' },
+    'export.html': { en: 'Download Standalone HTML', ar: 'تحميل صفحة HTML مستقلة' },
+    'export.copyHtml': { en: 'Copy HTML Code', ar: 'نسخ كود HTML' },
+    'export.openTab': { en: 'Open in New Tab', ar: 'فتح في نافذة كاملة' },
+    'export.saveConfig': { en: 'Export JSON Config', ar: 'تصدير إعدادات JSON' },
+    'export.loadConfig': { en: 'Import JSON Config', ar: 'استيراد إعدادات JSON' },
+    'export.success': { en: 'Portfolio generated successfully! Choose your preferred export below.', ar: 'تم إنشاء موقعك بنجاح! اختر طريقة التصدير أو النشر المفضلة أدناه.' },
+
+    'success.demo': { en: 'Loaded high-fidelity demo portfolio profile!', ar: 'تم تحميل بيانات الملف التجريبي المتكامل بنجاح!' },
+    'success.cleared': { en: 'Form has been reset.', ar: 'تمت إعادة ضبط النموذج بنجاح.' },
+    'success.copied': { en: 'Portfolio HTML copied to clipboard!', ar: 'تم نسخ كود الموقع إلى الحافظة بنجاح!' },
+    'success.zipped': { en: 'ZIP package downloaded successfully!', ar: 'تم تحميل حزمة ZIP المضغوطة بنجاح!' },
+    'success.htmlDownloaded': { en: 'Single-file portfolio HTML downloaded!', ar: 'تم تحميل ملف HTML المستقل بنجاح!' },
+    'success.configSaved': { en: 'Configuration exported to JSON!', ar: 'تم تصدير ملف الإعدادات بنجاح!' },
+    'success.configLoaded': { en: 'Configuration restored successfully!', ar: 'تم استيراد الإعدادات وتطبيقها بنجاح!' },
+    'success.deployed': { en: 'Deployed successfully to GitHub Pages!', ar: 'تم النشر بنجاح على GitHub Pages!' },
+
+    'loading.generating': { en: 'Rendering your responsive portfolio...', ar: 'جارٍ تجهيز وبناء صفحات الموقع...' },
+    'loading.deploying': { en: 'Deploying to GitHub Pages repository...', ar: 'جارٍ النشر إلى GitHub Pages...' },
+    'loading.zipping': { en: 'Bundling project files into ZIP archive...', ar: 'جارٍ تجميع وتجهيز الملفات المضغوطة...' },
+    'loading.syncing': { en: 'Connecting to GitHub API...', ar: 'جارٍ الاتصال بواجهة برمجة GitHub...' }
   },
+
   t(key) {
     return this.strings[key]?.[this.current] || key;
   },
+
   setLang(lang) {
-    if (!this.strings['app.title'][lang]) return;
+    if (!['en', 'ar'].includes(lang)) return;
     this.current = lang;
-    document.documentElement.dir = this.dirs[lang] || 'ltr';
+    const dir = this.dirs[lang] || 'ltr';
+    document.documentElement.dir = dir;
     document.documentElement.lang = lang;
-    document.getElementById('lang-label').textContent = lang === 'ar' ? 'EN' : 'AR';
+
+    const label = document.getElementById('lang-label');
+    if (label) label.textContent = lang === 'ar' ? 'English' : 'عربي';
+
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const k = el.dataset.i18n;
-      el.textContent = this.t(k);
+      if (k && this.strings[k]) {
+        el.textContent = this.t(k);
+      }
     });
-    this.updateForm();
+
+    if (typeof FormState !== 'undefined' && typeof FormState.renderStep === 'function') {
+      FormState.renderStep(FormState.currentStep);
+    }
+    if (typeof triggerPreview === 'function') {
+      triggerPreview();
+    }
   },
+
   toggle() {
     this.setLang(this.current === 'en' ? 'ar' : 'en');
-  },
-  updateForm() {
-    FormState.renderStep(FormState.currentStep);
   }
 };
+
+if (typeof window !== 'undefined') {
+  window.I18N = I18N;
+} else if (typeof globalThis !== 'undefined') {
+  globalThis.I18N = I18N;
+}

@@ -1,104 +1,212 @@
-/* Handlebars Helpers for Theme Rendering */
-Handlebars.registerHelper('t', function(key) {
-  const dict = {
-    'skills': I18N.current === 'ar' ? 'المهارات' : 'Skills',
-    'projects': I18N.current === 'ar' ? 'المشاريع' : 'Projects',
-    'education': I18N.current === 'ar' ? 'التعليم' : 'Education',
-    'bugbounty': I18N.current === 'ar' ? 'صيد الثغرات' : 'Bug Bounty',
-    'about': I18N.current === 'ar' ? 'نبذة' : 'About',
-    'contact': I18N.current === 'ar' ? 'تواصل' : 'Contact'
-  };
-  return dict[key] || key;
-});
-Handlebars.registerHelper('eq', function(a, b) { return a === b; });
-Handlebars.registerHelper('ne', function(a, b) { return a !== b; });
+/* =============================================
+   app.js — Core Orchestrator & UI Event Wiring
+   Universal Portfolio Generator — Elite Edition
+   ============================================= */
+
+// === Handlebars Helpers ===
+if (typeof Handlebars !== 'undefined') {
+  Handlebars.registerHelper('t', function(key) {
+    const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
+    const dict = {
+      'skills': isAr ? 'المهارات والتقنيات' : 'Skills & Technologies',
+      'projects': isAr ? 'المشاريع والأعمال' : 'Projects & Work',
+      'education': isAr ? 'التعليم والمؤهلات' : 'Education & Credentials',
+      'experience': isAr ? 'الخبرات المهنية' : 'Work Experience',
+      'bugbounty': isAr ? 'صيد الثغرات والأمان' : 'Bug Bounty & Security',
+      'about': isAr ? 'نبذة' : 'About Me',
+      'contact': isAr ? 'تواصل معي' : 'Contact Me'
+    };
+    return dict[key] || (typeof I18N !== 'undefined' ? I18N.t(key) : key);
+  });
+
+  Handlebars.registerHelper('eq', function(a, b) { return a === b; });
+  Handlebars.registerHelper('ne', function(a, b) { return a !== b; });
+  Handlebars.registerHelper('or', function(a, b) { return a || b; });
+  Handlebars.registerHelper('and', function(a, b) { return a && b; });
+  Handlebars.registerHelper('firstChar', function(str) {
+    return (str || '').trim().charAt(0).toUpperCase();
+  });
+  Handlebars.registerHelper('truncate', function(str, len) {
+    return Utils.truncate(str, typeof len === 'number' ? len : 100);
+  });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
-  AOS.init({ duration: 600, once: true });
-
-  FormState.init();
-  initPreview();
-
-  // Language toggle
-  document.getElementById('lang-toggle').addEventListener('click', () => I18N.toggle());
-
-  // Detect system dark mode preference
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-  if (prefersDark.matches) {
-    document.documentElement.classList.add('dark');
+  // Initialize AOS scroll animations if present
+  if (typeof AOS !== 'undefined') {
+    AOS.init({ duration: 500, once: true, offset: 40 });
   }
-  const icon = document.querySelector('#theme-toggle i');
-  icon.className = prefersDark.matches ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm';
 
-  // Listen for system theme changes (browser toggle)
-  prefersDark.addEventListener('change', (e) => {
-    if (e.matches) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
+  // Initialize Core State & Live Preview
+  if (typeof FormState !== 'undefined') {
+    FormState.init();
+
+    // Reactive subscription: state changes trigger debounced preview
+    if (typeof FormState.on === 'function') {
+      FormState.on('change', () => {
+        if (typeof renderPreview === 'function') renderPreview();
+      });
     }
-    const i = document.querySelector('#theme-toggle i');
-    i.className = e.matches ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm';
+  }
+
+  if (typeof initPreview === 'function') {
+    initPreview();
+  }
+
+  // Language Toggle
+  const langToggle = document.getElementById('lang-toggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      I18N.toggle();
+    });
+  }
+
+  // System Dark Mode Detection & Sync
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle?.querySelector('i');
+
+  const savedTheme = localStorage.getItem('upg-ui-theme');
+  if (savedTheme === 'dark' || (!savedTheme && prefersDark.matches)) {
+    document.documentElement.classList.add('dark');
+    if (themeIcon) themeIcon.className = 'fas fa-sun text-sm text-amber-400';
+  } else {
+    document.documentElement.classList.remove('dark');
+    if (themeIcon) themeIcon.className = 'fas fa-moon text-sm text-mono-500';
+  }
+
+  prefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('upg-ui-theme')) {
+      document.documentElement.classList.toggle('dark', e.matches);
+      if (themeIcon) {
+        themeIcon.className = e.matches ? 'fas fa-sun text-sm text-amber-400' : 'fas fa-moon text-sm text-mono-500';
+      }
+    }
   });
 
-  // Manual dark/light toggle (overrides system)
-  document.getElementById('theme-toggle').addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    const icon = document.querySelector('#theme-toggle i');
-    icon.className = document.documentElement.classList.contains('dark') ? 'fas fa-sun text-sm' : 'fas fa-moon text-sm';
-  });
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('upg-ui-theme', isDark ? 'dark' : 'light');
+      if (themeIcon) {
+        themeIcon.className = isDark ? 'fas fa-sun text-sm text-amber-400' : 'fas fa-moon text-sm text-mono-500';
+      }
+    });
+  }
 
-  // Preview panel toggle
+  // Preview Panel Toggle
   const previewToggle = document.getElementById('preview-toggle');
   const previewPanel = document.getElementById('preview-panel');
+  const previewClose = document.getElementById('preview-close');
 
-  previewToggle.addEventListener('click', () => {
-    const isOpen = previewPanel.classList.contains('open');
-    previewPanel.classList.toggle('open');
-    previewToggle.classList.toggle('active');
-    previewToggle.innerHTML = isOpen
-      ? '<i class="fas fa-eye"></i><span class="hidden sm:inline">Preview</span>'
-      : '<i class="fas fa-eye"></i><span class="hidden sm:inline">Preview</span>';
-    if (!isOpen) renderPreview();
-  });
+  if (previewToggle && previewPanel) {
+    previewToggle.addEventListener('click', () => {
+      const isOpen = previewPanel.classList.contains('open');
+      previewPanel.classList.toggle('open');
+      previewToggle.classList.toggle('active', !isOpen);
+      if (!isOpen && typeof renderPreview === 'function') {
+        renderPreview();
+      }
+    });
+  }
 
-  document.getElementById('preview-close').addEventListener('click', () => {
-    previewPanel.classList.remove('open');
-    previewToggle.classList.remove('active');
-    previewToggle.innerHTML = '<i class="fas fa-eye"></i><span class="hidden sm:inline">Preview</span>';
-  });
+  if (previewClose && previewPanel && previewToggle) {
+    previewClose.addEventListener('click', () => {
+      previewPanel.classList.remove('open');
+      previewToggle.classList.remove('active');
+    });
+  }
 
-  // ZIP download
-  document.getElementById('btn-zip').addEventListener('click', downloadZIP);
+  // Export Buttons Wiring
+  const btnZip = document.getElementById('btn-zip');
+  if (btnZip && typeof downloadZIP === 'function') {
+    btnZip.addEventListener('click', downloadZIP);
+  }
 
-  document.getElementById('btn-deploy').addEventListener('click', function showDeploy() {
-    const sec = document.getElementById('deploy-section');
-    sec.classList.toggle('hidden');
-    sec.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
+  const btnHtml = document.getElementById('btn-html');
+  if (btnHtml && typeof downloadHTML === 'function') {
+    btnHtml.addEventListener('click', downloadHTML);
+  }
 
-  document.getElementById('btn-deploy-go').addEventListener('click', deployToGitHub);
+  const btnCopyHtml = document.getElementById('btn-copy-html');
+  if (btnCopyHtml && typeof copyHTML === 'function') {
+    btnCopyHtml.addEventListener('click', copyHTML);
+  }
 
-  // Generate confirmation modal
-  document.getElementById('modal-confirm').addEventListener('click', confirmGenerate);
-  document.getElementById('modal-cancel').addEventListener('click', cancelGenerate);
+  const btnTab = document.getElementById('btn-tab');
+  if (btnTab && typeof openPreviewTab === 'function') {
+    btnTab.addEventListener('click', openPreviewTab);
+  }
 
-  // Download tip modal
-  document.getElementById('tip-modal-ok').addEventListener('click', function() {
-    document.getElementById('tip-modal').classList.add('hidden');
-    document.getElementById('tip-modal').style.display = 'none';
-  });
+  // GitHub Pages Deploy Section Toggle
+  const btnDeploy = document.getElementById('btn-deploy');
+  if (btnDeploy) {
+    btnDeploy.addEventListener('click', () => {
+      const sec = document.getElementById('deploy-section');
+      if (sec) {
+        sec.classList.toggle('hidden');
+        sec.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+
+  const btnDeployGo = document.getElementById('btn-deploy-go');
+  if (btnDeployGo && typeof deployToGitHub === 'function') {
+    btnDeployGo.addEventListener('click', deployToGitHub);
+  }
+
+  // Generate confirmation modal handlers
+  const modalConfirm = document.getElementById('modal-confirm');
+  if (modalConfirm && typeof confirmGenerate === 'function') {
+    modalConfirm.addEventListener('click', confirmGenerate);
+  }
+
+  const modalCancel = document.getElementById('modal-cancel');
+  if (modalCancel && typeof cancelGenerate === 'function') {
+    modalCancel.addEventListener('click', cancelGenerate);
+  }
+
+  // Tip Modal Dismiss
+  const tipModalOk = document.getElementById('tip-modal-ok');
+  if (tipModalOk) {
+    tipModalOk.addEventListener('click', () => {
+      const m = document.getElementById('tip-modal');
+      if (m) {
+        m.classList.add('hidden');
+        m.style.display = 'none';
+      }
+    });
+  }
 
   // Close modals on backdrop click
-  document.getElementById('generate-modal').addEventListener('click', function(e) {
-    if (e.target === this) cancelGenerate();
-  });
-  document.getElementById('tip-modal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      document.getElementById('tip-modal').classList.add('hidden');
-      document.getElementById('tip-modal').style.display = 'none';
+  ['generate-modal', 'tip-modal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('click', function(e) {
+        if (e.target === this) {
+          this.classList.add('hidden');
+          this.style.display = 'none';
+        }
+      });
     }
   });
 
-  console.log('Universal Portfolio Generator v2 initialized');
+  // ESC key dismisses modals and preview panel
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      ['generate-modal', 'tip-modal'].forEach(id => {
+        const m = document.getElementById(id);
+        if (m) {
+          m.classList.add('hidden');
+          m.style.display = 'none';
+        }
+      });
+      if (window.innerWidth < 900 && previewPanel?.classList.contains('open')) {
+        previewPanel.classList.remove('open');
+        previewToggle?.classList.remove('active');
+      }
+    }
+  });
+
+  console.log('Universal Portfolio Generator — Elite Edition initialized');
 });
