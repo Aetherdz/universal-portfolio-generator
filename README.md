@@ -1,240 +1,235 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/ارسم%20هويتك%20%7C%20Draw%20Your%20Profile-0a0a0f?style=for-the-badge&labelColor=111&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjQTY3QjVCIi8+PHBhdGggZD0iTTEyIDIwaDE2TTIwIDEydjE2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE0IDE0bDEyIDEyTTI2IDE0bC0xMiAxMiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+">
-    <img src="https://img.shields.io/badge/ارسم%20هويتك%20%7C%20Draw%20Your%20Profile-A67B5B?style=for-the-badge&labelColor=8B5E3C&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHJ4PSI4IiBmaWxsPSIjQTY3QjVCIi8+PHBhdGggZD0iTTEyIDIwaDE2TTIwIDEydjE2IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE0IDE0bDEyIDEyTTI2IDE0bC0xMiAxMiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+">
-  </picture>
+  <a href="https://universal-portfolio-generator.vercel.app" target="_blank" rel="noopener">
+    <img src="assets/banner.svg" alt="PortfolioGen Banner" width="100%">
+  </a>
 </p>
 
 <p align="center">
   <samp>
-    <b>ارسم هويتك</b> &nbsp;·&nbsp; <b>Universal Portfolio Generator</b>
+    <b>PortfolioGen</b> · <b>ارسم هويتك (Draw Your Profile)</b>
   </samp>
   <br>
-  <sub>منشئ البورتفوليو الحديث للمطورين، صائدي الثغرات، والمبدعين · 100% Client-Side &amp; Privacy-First</sub>
+  <sub>The high-performance, privacy-first portfolio builder for software engineers, security researchers, and digital creators.</sub>
 </p>
 
 <p align="center">
-  <a href="#-key-features">✨ المميزات</a> &nbsp;·&nbsp;
-  <a href="#-quick-start">🚀 البدء السريع</a> &nbsp;·&nbsp;
-  <a href="#-themes-showcase">🎨 القوالب والسمات</a> &nbsp;·&nbsp;
-  <a href="#-architecture--tech-stack">🧰 البنية التقنية</a> &nbsp;·&nbsp;
-  <a href="#-one-click-deployment">📦 النشر المباشر</a> &nbsp;·&nbsp;
-  <a href="#-developer-guide">🛠️ دليل المطورين</a>
+  <a href="#-key-features">✨ Features</a> &nbsp;•&nbsp;
+  <a href="#-live-demonstrations">🌐 Live Demos</a> &nbsp;•&nbsp;
+  <a href="#-modular-architecture">🏗️ Architecture</a> &nbsp;•&nbsp;
+  <a href="#-the-7-signature-themes">🎨 Themes</a> &nbsp;•&nbsp;
+  <a href="#-quick-start">🚀 Quick Start</a> &nbsp;•&nbsp;
+  <a href="#-extensibility-guide">🧩 Plugin Guide</a> &nbsp;•&nbsp;
+  <a href="#-security--privacy">🔒 Security</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-blue?style=flat-square" alt="MIT License">
-  <img src="https://img.shields.io/badge/Arabic%20RTL-Native%20100%25-22c55e?style=flat-square" alt="RTL Support">
-  <img src="https://img.shields.io/badge/Themes-7%20Styles-8b5cf6?style=flat-square" alt="7 Themes">
-  <img src="https://img.shields.io/badge/Build%20Step-Zero%20(Pure%20JS)-success?style=flat-square" alt="No Build Step">
-  <img src="https://img.shields.io/badge/Skills-80%2B%20Icons-f59e0b?style=flat-square" alt="80+ Skills">
-  <img src="https://img.shields.io/badge/Privacy-100%25%20Client--Side-ec4899?style=flat-square" alt="Client-Side Only">
-  <img src="https://img.shields.io/badge/Security-DOMPurify%20Sanitized-06b6d4?style=flat-square" alt="DOMPurify">
+  <img src="https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License">
+  <img src="https://img.shields.io/badge/Architecture-100%25%20Modular-10b981?style=for-the-badge&logo=javascript&logoColor=white" alt="Modular Architecture">
+  <img src="https://img.shields.io/badge/RTL-Native%20Arabic%20%2B%20English-8b5cf6?style=for-the-badge" alt="Bilingual RTL">
+  <img src="https://img.shields.io/badge/Build%20Step-Zero%20(Pure%20Vanilla%20ES6)-f59e0b?style=for-the-badge&logo=fastapi&logoColor=white" alt="Zero Build Step">
+  <img src="https://img.shields.io/badge/Privacy-100%25%20Client--Side-ec4899?style=for-the-badge&logo=shield&logoColor=white" alt="Client-Side Only">
+  <img src="https://img.shields.io/badge/Sanitization-DOMPurify%20Hardened-06b6d4?style=for-the-badge" alt="DOMPurify">
 </p>
 
 ---
 
-<p align="center">
-  <a href="https://universal-portfolio-generator.vercel.app" target="_blank">
-    <img src="https://img.shields.io/badge/Deploy%20on-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Live">
-  </a>
-  &nbsp;
-  <a href="https://portfolio-generat.netlify.app" target="_blank">
-    <img src="https://img.shields.io/badge/Deploy%20on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify Live">
-  </a>
-  &nbsp;
-  <a href="https://aetherdz.github.io/universal-portfolio-generator" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-Pages-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages">
-  </a>
-</p>
+## 🌐 Live Demonstrations
 
-<p align="center">
-  🌐 <b>الروابط الحية المباشرة (Live Demonstrations):</b><br>
-  <code>https://universal-portfolio-generator.vercel.app</code> &nbsp;|&nbsp;
-  <code>https://portfolio-generat.netlify.app</code> &nbsp;|&nbsp;
-  <code>https://aetherdz.github.io/universal-portfolio-generator</code>
-</p>
+Experience the generator live in your browser with zero installation:
+
+| Provider | Production Endpoint | Deployment Type | Status |
+|:---|:---|:---|:---:|
+| **Vercel** | [universal-portfolio-generator.vercel.app](https://universal-portfolio-generator.vercel.app) | Edge CDN Static | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **Netlify** | [portfolio-generat.netlify.app](https://portfolio-generat.netlify.app) | Global Edge Network | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
+| **GitHub Pages** | [aetherdz.github.io/universal-portfolio-generator](https://aetherdz.github.io/universal-portfolio-generator) | Direct Branch Serving | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
 
 ---
 
-## 💡 نظرة عامة (Overview)
+## 💡 Overview
 
-**Universal Portfolio Generator** (ارسم هويتك) هو تطبيق ويب متكامل ومفتوح المصدر يتيح للتقنيين، المطورين، صائدي الثغرات (Bug Bounty Hunters)، والباحثين إنشاء معرض أعمال (Portfolio) تفاعلي واحترافي في دقائق معدودة، مباشرة من المتصفح، ودون الحاجة لأي خادم خلفي (Serverless) أو خطوات بناء معقدة (No Bundlers / No Build Steps).
+**PortfolioGen** is a modern, client-side web application engineered to generate developer portfolios, hacker résumés, and technical showcase sites in minutes. Designed from the ground up for speed, modularity, and privacy:
 
-### ✨ الفلسفة الجوهرية (Core Philosophy)
-* **Zero Configuration & Instant Execution**: يعمل مباشرة عبر المتصفح (Pure HTML5, Vanilla JavaScript, CSS3).
-* **100% Client-Side Privacy**: بياناتك ورموز الوصول (GitHub Personal Access Tokens) لا تغادر متصفحك أبداً ولا تُخزن في أي قاعدة بيانات خارجية.
-* **Native RTL & Dual Language**: دعم حقيقي للغة العربية من اليمين لليسار (RTL) بالإضافة للإنجليزية، مع محاذاة تلقائية للمحتوى.
-* **Specialized Profiles**: دعم مخصص لأقسام صائدي الثغرات (HackerOne, Bugcrowd, CVEs, Stats) والباحثين الأكاديميين بجانب المطورين.
+* **Zero Build Step, Zero Friction**: Pure vanilla ES6+, HTML5, and Tailwind CSS. Runs instantly in any modern web browser or through a static local file server.
+* **Modular Theme Engine**: Each template is completely isolated into its own pluggable component. Adding a custom theme requires zero modifications to the core engine.
+* **100% Client-Side Privacy**: No external backend or tracking database. All personal information, tokens, and projects remain strictly inside your browser's local memory.
+* **First-Class Arabic RTL Support**: Complete bidirectional mirroring (`dir="rtl"`) with automatic typographic cascades (Google Fonts *Cairo* and *Tajawal*).
+* **Security Researcher First**: Built-in support for Bug Bounty platforms (HackerOne, Bugcrowd, Intigriti), CVE badges, and security scorecards.
 
 ---
 
-## ✨ المميزات الرئيسية (Key Features)
+## ✨ Key Features
 
 ```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│ 🎨 7 قوالب متطورة (7 Ultra-Modern Themes)                                        │
-│  ▸ Aether: تصميم سايبربنك مع توهج نيون وجزيئات تفاعلية                          │
-│  ▸ Terminal: واجهة سطر الأوامر (CLI/Hacker) لهواة الأمن السيبراني                 │
-│  ▸ Minimal: بساطة نقية، ومساحات بيضاء تركز على المحتوى والطباعة                │
-│  ▸ Bento Grid: أحدث أسلوب بطاقات شبكية عصرية متناسقة (Apple-style Bento)        │
-│  ▸ Glassmorphic: تأثيرات الزجاج المصقول الشفاف (Frosted Glass & Depth)          │
-│  ▸ Dark Premium: أناقة داكنة مع تدرجات لونية فاخرة تناسب المنتجات والمؤسسين      │
-│  ▸ Academic: أسلوب كلاسيكي أكاديمي للباحثين والجامعيين مع خطوط سيريف           │
-└─────────────────────────────────────────────────────────────────────────────────┘
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│ ⚡ قدرات ذكية ومتقدمة (Smart Capabilities)                                      │
-│  ▸ مزامنة GitHub الذكية: استيراد مشاريعك الحقيقية تلقائياً بنقرة واحدة           │
-│  ▸ أكثر من 80 مهارة برمجية وتقنية مع كشف أيقونات Devicon تلقائياً                │
-│  ▸ 8 لوحات ألوان مختارة بعناية + منتقي ألوان مخصص (Custom Hex / Color Picker)    │
-│  ▸ أكثر من 16 خطاً احترافياً من Google Fonts تدعم العربية والإنجليزية             │
-│  ▸ محاكي معاينة حي ثلاثي الأبعاد (Desktop · Tablet · Mobile Viewports)          │
-│  ▸ حماية شاملة من هجمات XSS عبر تعقيم المدخلات باستخدام DOMPurify               │
-│  ▸ تصدير وحفظ كامل: تنزيل ملف ZIP جاهز، أو ملف JSON لحفظ واستعادة إعداداتك      │
-│  ▸ نشر فوري إلى GitHub Pages بنقرة زر واحدة عبر Octokit REST API                │
-└─────────────────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────┐
+│ 🎨 7 Signature Themes (Modular & Pluggable)                                      │
+│  ▸ Aether: Cyberpunk neon glow with interactive Canvas particles & physics        │
+│  ▸ Terminal: Hacker CLI matrix environment with retro window headers & monospace  │
+│  ▸ Minimal: Swiss typographic masterclass with generous whitespace & dark/light   │
+│  ▸ Bento Grid: High-density asymmetric modular cards (Apple & Linear design)      │
+│  ▸ Glassmorphic: Frosted ambient aurora glow with backdrop blur tokens & depth    │
+│  ▸ Dark Premium: Obsidian midnight developer layout with subtle grid patterns     │
+│  ▸ Academic: Scholarly CV format with timeline citations & serif typography       │
+└───────────────────────────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────────────────────┐
+│ ⚡ Power Capabilities                                                            │
+│  ▸ GitHub Sync: One-click repository fetcher with auto-extracted tech stacks      │
+│  ▸ 80+ Devicon Skills: Automatic devicon-class detection with colored badges      │
+│  ▸ Reactive Event Bus: Real-time debounced preview rendering with zero lag        │
+│  ▸ 10 Curated Palettes: Sapphire, Dracula, Nord, Monokai, Catppuccin & Custom Hex │
+│  ▸ Multi-Device Preview: Desktop, Tablet (768px), and Mobile (375px) viewports    │
+│  ▸ Multi-Format Export: Single-file HTML, Production ZIP, or JSON config archive   │
+│  ▸ One-Click GitHub Pages: Automated repository creation and commit via Octokit   │
+│  ▸ Security Hardened: Strict URI whitelisting & DOMPurify script neutralization   │
+└───────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 🚀 البدء السريع (Quick Start)
+## 🚀 Quick Start
 
-### 1. الاستخدام المباشر (Online)
-افتح أحد الروابط المباشرة دون الحاجة لتثبيت أي برنامج:
-👉 **[جرب التطبيق الآن على Vercel](https://universal-portfolio-generator.vercel.app)**
+### 1. Online Execution
+Open any of the production deployments linked above. No accounts or registrations required.
 
-### 2. التشغيل محلياً (Local Development)
-التطبيق يعمل دون أي بيئة عمل خاصة أو تبعيات Node.js إجبارية. يكفي تشغيل خادم محلي خفيف:
+### 2. Local Development (Instant)
+Clone the repository and serve with any local HTTP server:
 
 ```bash
-# 1. استنساخ المستودع
-git clone https://github.com/Aetherdz/universal-portfolio-generator.git
-cd universal-portfolio-generator
+# Clone the repository
+git clone https://github.com/Aetherdz/universal-portfolio-generator.git portfoliogen
+cd portfoliogen
 
-# 2. تشغيل عبر Python
+# Option A: Python 3
 python3 -m http.server 8080
 
-# أو تشغيل عبر Node.js / npx
+# Option B: Node.js (npx)
 npx serve .
 
-# أو تشغيل عبر PHP
+# Option C: PHP
 php -S localhost:8080
 ```
-ثم افتح المتصفح على العنوان: `http://localhost:8080`
+Then navigate to `http://localhost:8080` in your browser.
 
 ---
 
-## 🎨 القوالب والسمات (Themes Showcase)
+## 🏗️ Modular Architecture
 
-| المعرف (ID) | اسم السمة | النمط البصري | الفئة المستهدفة | دعم العربية (RTL) |
-|:---:|:---|:---|:---|:---:|
-| `aether` | **Aether** 🪐 | Cyberpunk / Neon Glow / Particles | مهندسو البرمجيات والتقنيون | ✅ مدعوم بالكامل |
-| `terminal` | **Terminal** 💻 | Hacker CLI / Retro Monospace Green | خبراء الأمن وصائدو الثغرات | ✅ مدعوم بالكامل |
-| `minimal` | **Minimal** ✨ | Clean Typography / Generous Spacing | المصممون وصناع المحتوى | ✅ مدعوم بالكامل |
-| `bento` | **Bento Grid** 🔲 | High-density Modern Cards | مطورو الويب والواجهات المتعددة | ✅ مدعوم بالكامل |
-| `glassmorphic` | **Glassmorphic** 🪟 | Blur backdrop / Gradients / Layering | الباحثون عن مظهر عصري فاخر | ✅ مدعوم بالكامل |
-| `dark-premium` | **Dark Premium** 🌙 | Subtle borders / Gradient typography | مؤسسو المشاريع والمستقلون | ✅ مدعوم بالكامل |
-| `academic` | **Academic** 🎓 | Timelines / Serif headers / Formal | الباحثون الأكاديميون وطلبة الدراسات | ✅ مدعوم بالكامل |
-
----
-
-## 🗺️ خطوات رحلة البناء (Builder Workflow)
-
-```mermaid
-flowchart LR
-    A["👤 الخطوة 1:<br>البيانات الشخصية"] --> B["🌐 الخطوة 2:<br>التواصل & الثغرات"]
-    B --> C["⚡ الخطوة 3:<br>المهارات والأيقونات"]
-    C --> D["📂 الخطوة 4:<br>المشاريع ومزامنة GitHub"]
-    D --> E["🎨 الخطوة 5:<br>السمة والخطوط والألوان"]
-    E --> F{"📦 الإخراج والتصدير"}
-    F --> G["🚀 نشر مباشر على GitHub Pages"]
-    F --> H["💾 تحميل حزمة ZIP مستقلة"]
-    F --> I["⚙️ تصدير / استيراد ملف Config JSON"]
-```
-
-1. **البيانات الشخصية (Profile)**: الاسم، النبذة، الصورة الشخصية، التخصص، والبلد.
-2. **الشبكات الاجتماعية وصيد الثغرات (Socials & Bounty)**: دعم أكثر من 20 منصة تواصل، بالإضافة لأرقام وإحصائيات HackerOne و Bugcrowd.
-3. **المهارات (Skills)**: إضافة لغات البرمجة وأطر العمل مع مطابقة فورية لأيقونات Devicon الشهيرة.
-4. **المشاريع (Projects)**: إضافة الروابط والوصف والوسوم، مع إمكانية جلب مستودعات GitHub تلقائياً عبر اسم المستخدم.
-5. **التخصيص والمظهر (Customization)**: اختيار القالب، لوحة الألوان، الخطوط، وتعديل إعدادات التعتيم الزجاجي والأنيميشن (AOS).
-6. **التصدير الفوري (Deploy & Export)**: توليد ملف HTML متكامل ومستقل بنسبة 100%، جاهز للاستضافة الفورية في أي مكان.
-
----
-
-## 🧰 البنية التقنية (Architecture & Tech Stack)
+The repository avoids monolithic code files by adopting a decoupled, component-based layout:
 
 ```
-universal-portfolio-generator/
-├── index.html                 # نقطة الدخول وواجهة التطبيق الرئيسية
-├── .nojekyll                  # لمنع معالجة Jekyll على GitHub Pages
+portfoliogen/
+├── index.html                   # Application entry point & accessible UI shell
+├── .nojekyll                    # GitHub Pages Jekyll bypass flag
+├── assets/
+│   └── banner.svg               # Vector brand graphic & SVG presentation
 ├── css/
-│   └── style.css              # التنسيقات العامة والتحسينات المخصصة
+│   └── style.css                # Obsidian design system, glassmorphism & resets
 ├── js/
-│   ├── app.js                 # التهيئة الشاملة وربط الأحداث
-│   ├── form.js                # إدارة النموذج متعدد الخطوات والتحقق
-│   ├── design-tokens.js       # منظومة الألوان والخطوط والأبعاد
-│   ├── themes.js              # محركات القوالب السبعة مع دوال التوليد
-│   ├── preview.js             # محاكي العرض المباشر (Sandboxed Iframe)
-│   ├── github.js              # عمليات Octokit والمزامنة والنشر
-│   ├── export.js              # تصدير ملفات ZIP وتوليد الشفرة
-│   ├── i18n.js                # نظام الترجمة المتكامل (عربي / إنجليزي)
-│   └── utils.js               # دوال المساعدة، التعقيم الأمني، وخريطة الأيقونات
-└── README.md                  # دليل المشروع والتوثيق الشامل
+│   ├── app.js                   # Application lifecycle, keybindings & orchestration
+│   ├── design-tokens.js         # Color palettes, typography & design system tokens
+│   ├── form.js                  # Reactive multi-step state machine & Event Bus
+│   ├── export.js                # ZIP, standalone HTML & JSON config generators
+│   ├── github.js                # Octokit GitHub Pages deployer & repo synchronizer
+│   ├── i18n.js                  # Bilingual translation dictionary (English & Arabic)
+│   ├── preview.js               # Sandboxed multi-viewport iframe renderer
+│   ├── utils.js                 # DOMPurify sanitizer, URI whitelist & icon mappings
+│   ├── themes.js                # Core ThemeRegistry facade (backwards-compatible)
+│   └── themes/                  # Modular Individual Theme Components
+│       ├── registry.js          # Pluggable ThemeRegistry class & lifecycle hooks
+│       ├── aether.js            # Theme 1: Aether Cyberpunk Canvas
+│       ├── terminal.js          # Theme 2: Hacker CLI Terminal
+│       ├── minimal.js           # Theme 3: Swiss Typography Minimalist
+│       ├── bento.js             # Theme 4: Modern Bento Box Grid
+│       ├── glassmorphic.js      # Theme 5: Frosted Aurora Glassmorphism
+│       ├── dark-premium.js      # Theme 6: Obsidian Midnight Developer
+│       └── academic.js          # Theme 7: Scholarly CV & Research Timeline
+└── README.md                    # Project documentation
 ```
 
-| المكون | التقنية المستخدمة | الدور في المنظومة |
-|:---|:---|:---|
-| **اللغة الأساسية** | Vanilla Modern JavaScript (ES6+) | أداء فائق دون أي حمولة زائدة للأطر الثقيلة |
-| **محرك القوالب** | Handlebars.js (Client-side) | عزل البيانات وتوليد شفرات الـ HTML بمرونة |
-| **نظام التنسيق** | Tailwind CSS CDN + Custom Variables | نظام تصميم موحد وسريع الاستجابة للوضع الليلي |
-| **الأيقونات** | Devicon + Font Awesome 6 | مكتبة واسعة لتغطية جميع التقنيات والشبكات |
-| **الأمان والتعقيم** | DOMPurify | تنقية شاملة لجميع نصوص المستخدم لمنع هجمات XSS |
-| **الحزم المضغوطة** | JSZip + FileSaver.js | بناء وتوليد ملف ZIP كامل داخل المتصفح مباشرة |
-| **التفاعل مع السحاب**| @octokit/rest | إدارة مستودعات GitHub وتفعيل GitHub Pages برمجياً |
-| **الحركات البصرية** | AOS (Animate On Scroll) | تأثيرات دخول وانتقال سلسة أثناء التمرير |
+---
+
+## 🎨 The 7 Signature Themes
+
+| ID | Theme Name | Visual Philosophy | Best Suited For | RTL Arabic | Dark / Light |
+|:---:|:---|:---|:---|:---:|:---:|
+| `1` | **Aether** 🪐 | Interactive canvas particle network, neon glows | Full-stack developers, tech leads | ✅ Full | ✅ Toggleable |
+| `2` | **Terminal** 💻 | Monospace CRT terminal, matrix glow, Unix prompt | Hackers, Pentesting, Security researchers | ✅ Full | 🌙 Dark Core |
+| `3` | **Minimal** ✨ | Pure Swiss whitespace, micro-borders, clean type | Product designers, minimalist engineers | ✅ Full | ✅ Toggleable |
+| `4` | **Bento Grid** 🔲 | Asymmetric card tiles, linear micro-shadows | Multi-disciplinary developers, founders | ✅ Full | 🌙 Dark Core |
+| `5` | **Glassmorphic** 🪟 | Deep radial backdrop blur, translucent glass cards | Modern frontend & UI engineers | ✅ Full | 🌙 Aurora Dark |
+| `6` | **Dark Premium** 🌙 | 1px radial grid pattern, obsidian contrast | Cloud architects, SaaS engineers | ✅ Full | 🌙 Obsidian |
+| `7` | **Academic** 🎓 | Timelines, formal serif headers, publication cards | Researchers, PhD candidates, academics | ✅ Full | ☀️ Formal Light |
 
 ---
 
-## 🔒 الأمان والخصوصية (Security & Privacy)
+## 🧩 Extensibility Guide: Adding a Custom Theme
 
-* 🛡️ **Zero External Server Storage**: التطبيق لا يملك أي قاعدة بيانات خلفية؛ جميع البيانات المدخلة تعيش حصرياً في ذاكرة متصفحك (Session Memory).
-* 🔑 **GitHub PAT Safety**: لا يتم تخزين رمز الوصول الشخصي (Personal Access Token) نهائياً على أي قرص؛ يُستخدم لمرة واحدة عبر جلسة العميل المباشرة لإنشاء المستودع والنشر، ثم يُمسح فوراً.
-* 🧼 **Strict Output Sanitization**: كل حقل يدخله المستخدم يمر عبر تعقيم صارم لمنع حقن السكربتات (Cross-Site Scripting).
+PortfolioGen features a pluggable theme registry. You can add a new theme in under **3 minutes** without altering existing templates:
 
----
-
-## 🛠️ دليل المطورين والمساهمة (Developer Guide)
-
-### إضافة قالب جديد (Adding a New Theme)
-القوالب مبنية بشكل معياري في `js/themes.js`. لإضافة ستايل جديد:
+1. Create a new file in `js/themes/my-custom-theme.js`:
 ```javascript
-// داخل كائن Themes في js/themes.js
-myNewTheme: {
-  id: 'myNewTheme',
-  name: 'My Custom Theme',
+ThemeRegistry.register({
+  id: 'my-custom-theme',
+  nameKey: 'theme.custom',
   icon: 'fas fa-sparkles',
-  render: function(data, options) {
-    // بناء قالب الـ HTML مع استبدال البيانات
-    return `<!DOCTYPE html><html>...</html>`;
+  description: 'My custom developer template',
+  render: function(data) {
+    return Handlebars.compile(`
+      <!DOCTYPE html>
+      <html lang="{{lang}}" dir="{{dir}}">
+      <head>
+        <meta charset="UTF-8">
+        <title>{{name}} — Portfolio</title>
+        <style>
+          body { font-family: sans-serif; background: {{colors.bg}}; color: {{colors.text}}; }
+        </style>
+      </head>
+      <body>
+        <h1>{{name}}</h1>
+        <p>{{role}}</p>
+      </body>
+      </html>
+    `)(data);
   }
-}
+});
 ```
-
-### إضافة أيقونات وتقنيات جديدة
-في ملف `js/utils.js`، أضف المفتاح الجديد في كائن `SKILL_ICON_MAP`:
-```javascript
-'bun': { name: 'Bun', class: 'devicon-bun-plain colored' }
+2. Include your script in `index.html`:
+```html
+<script src="js/themes/my-custom-theme.js"></script>
 ```
+3. Your theme is immediately available in the picker, preview, and export engine!
 
 ---
 
-## 📜 الترخيص (License)
+## 🔒 Security & Privacy Architecture
 
-هذا المشروع مرخص تحت رخصة **[MIT License](LICENSE)**. يحق لك استخدامه وتعديله وتوزيعه بحرية تامة للأغراض الشخصية والتجارية.
+* **Zero Data Transmission**: Everything runs purely in client-side JavaScript. No form values, email addresses, or repository lists are ever sent to an external server.
+* **Ephemeral GitHub PAT Token**: When using the direct GitHub Pages deployer, your Personal Access Token (`repo` scope) is retained only in browser RAM for the duration of the API call and is never cached in `localStorage` or disk.
+* **XSS Defense-in-Depth**:
+  - `Utils.sanitize()` strips unsafe HTML tags via **DOMPurify**.
+  - `Utils.sanitizeURL()` aggressively neutralizes `javascript:`, `vbscript:`, and malicious `data:` URIs.
+* **Sandboxed Live Preview**: The live iframe operates under strict sandboxing (`sandbox="allow-scripts allow-same-origin"`), ensuring total isolation between the builder UI and the rendered template.
+
+---
+
+## 🤝 Contributing
+
+Contributions from the developer and open-source community are warmly welcomed!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/EpicTheme`)
+3. Commit your Changes (`git commit -m 'feat: Add Nord Minimalist theme'`)
+4. Push to the Branch (`git push origin feature/EpicTheme`)
+5. Open a Pull Request
+
+---
+
+## 📜 License
+
+Distributed under the **MIT License**. See `LICENSE` for more information.
 
 ---
 
 <p align="center">
-  صُمم وطُوّر بكل فخر بواسطة <b><a href="https://github.com/Aetherdz">Aether-DZ</a></b><br>
-  <sub>مهندس برمجيات · صائد ثغرات أمنية · باحث أمن ذكاء اصطناعي</sub>
+  Crafted with precision by <b><a href="https://github.com/Aetherdz">Aether-DZ</a></b><br>
+  <sub>Software Engineer · Security Researcher · AI Systems Architect</sub>
 </p>

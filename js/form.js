@@ -473,10 +473,46 @@ const FormState = {
       const s = parseInt(dot.dataset.step, 10);
       dot.classList.toggle('active', s === this.currentStep);
       dot.classList.toggle('done', s < this.currentStep);
+      if (s === this.currentStep && typeof dot.scrollIntoView === 'function') {
+        try {
+          dot.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } catch (e) {}
+      }
     });
     lines.forEach((line, i) => {
       line.classList.toggle('done', this.currentStep > i + 1);
     });
+
+    // Synchronize Mobile Sticky Action Bar
+    const mobilePrev = document.getElementById('mobile-btn-prev');
+    const mobileNext = document.getElementById('mobile-btn-next');
+    const mobileNextText = document.getElementById('mobile-next-text');
+    const mobileNextIcon = document.getElementById('mobile-next-icon');
+    const isAr = I18N.current === 'ar';
+
+    if (mobilePrev) {
+      if (this.currentStep <= 1) {
+        mobilePrev.disabled = true;
+        mobilePrev.classList.add('opacity-40', 'pointer-events-none');
+      } else {
+        mobilePrev.disabled = false;
+        mobilePrev.classList.remove('opacity-40', 'pointer-events-none');
+      }
+    }
+
+    if (mobileNext && mobileNextText) {
+      if (this.currentStep === 5) {
+        mobileNextText.textContent = I18N.t('btn.finish');
+        mobileNext.className = 'btn btn-success flex-[2] py-3 text-xs';
+        mobileNext.setAttribute('onclick', 'finishForm()');
+        if (mobileNextIcon) mobileNextIcon.className = 'fas fa-wand-magic-sparkles text-xs';
+      } else {
+        mobileNextText.textContent = I18N.t('btn.next');
+        mobileNext.className = 'btn btn-primary flex-[2] py-3 text-xs';
+        mobileNext.setAttribute('onclick', 'nextStep()');
+        if (mobileNextIcon) mobileNextIcon.className = `fas ${isAr ? 'fa-arrow-left' : 'fa-arrow-right'} text-xs`;
+      }
+    }
   },
 
   // --- Step 1: Profile ---
@@ -877,7 +913,11 @@ const FormState = {
       <div class="theme-grid mb-6">
     `;
 
-    THEMES.forEach(t => {
+    const themeList = (typeof ThemeRegistry !== 'undefined' && ThemeRegistry.getAll)
+      ? ThemeRegistry.getAll()
+      : (typeof THEMES !== 'undefined' ? THEMES : ((typeof window !== 'undefined' && window.THEMES) || []));
+
+    themeList.forEach(t => {
       const sel = d.theme === t.id ? 'selected' : '';
       const thumbs = {
         1: '<svg viewBox="0 0 120 60" class="w-full h-full"><rect width="120" height="60" fill="#000"/><circle cx="24" cy="22" r="10" fill="#00ffaa" opacity="0.9"/><rect x="42" y="14" width="55" height="4" rx="2" fill="#fff" opacity="0.3"/><rect x="42" y="22" width="35" height="3" rx="1.5" fill="#00ffaa" opacity="0.6"/><rect x="10" y="42" width="45" height="8" rx="2" fill="#fff" opacity="0.08"/><rect x="62" y="42" width="48" height="8" rx="2" fill="#fff" opacity="0.08"/></svg>',
@@ -1070,11 +1110,11 @@ const FormState = {
   navButtons(isLast = false) {
     const isAr = I18N.current === 'ar';
     const prev = this.currentStep > 1
-      ? `<button type="button" class="px-4 sm:px-5 py-2.5 border border-mono-300 dark:border-mono-700 rounded-xl text-xs sm:text-sm font-semibold hover:bg-mono-100 dark:hover:bg-mono-800 transition" onclick="prevStep()">${I18N.t('btn.prev')}</button>`
+      ? `<button type="button" class="btn btn-secondary px-5 py-2.5 text-xs sm:text-sm" onclick="prevStep()"><i class="fas ${isAr ? 'fa-arrow-right' : 'fa-arrow-left'} text-xs"></i><span>${I18N.t('btn.prev')}</span></button>`
       : `<div></div>`;
     const next = isLast
-      ? `<button type="button" class="px-6 py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-lg flex items-center gap-2" onclick="finishForm()"><i class="fas fa-wand-magic-sparkles"></i><span>${I18N.t('btn.finish')}</span></button>`
-      : `<button type="button" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md flex items-center gap-2" onclick="nextStep()"><span>${I18N.t('btn.next')}</span></button>`;
+      ? `<button type="button" class="btn btn-success px-6 py-2.5 text-xs sm:text-sm" onclick="finishForm()"><i class="fas fa-wand-magic-sparkles text-xs"></i><span>${I18N.t('btn.finish')}</span></button>`
+      : `<button type="button" class="btn btn-primary px-6 py-2.5 text-xs sm:text-sm" onclick="nextStep()"><span>${I18N.t('btn.next')}</span><i class="fas ${isAr ? 'fa-arrow-left' : 'fa-arrow-right'} text-xs"></i></button>`;
     return `<div class="form-nav">${prev}${next}</div>`;
   },
 

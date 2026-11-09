@@ -94,26 +94,59 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Preview Panel Toggle
+  // Preview Panel Toggle & Mobile Bottom-Sheet Controller
   const previewToggle = document.getElementById('preview-toggle');
+  const mobilePreviewBtn = document.getElementById('mobile-btn-preview');
   const previewPanel = document.getElementById('preview-panel');
   const previewClose = document.getElementById('preview-close');
 
-  if (previewToggle && previewPanel) {
-    previewToggle.addEventListener('click', () => {
-      const isOpen = previewPanel.classList.contains('open');
-      previewPanel.classList.toggle('open');
-      previewToggle.classList.toggle('active', !isOpen);
-      if (!isOpen && typeof renderPreview === 'function') {
+  function togglePreviewPanel() {
+    if (!previewPanel) return;
+    const isOpen = previewPanel.classList.contains('open');
+    if (isOpen) {
+      previewPanel.classList.remove('open');
+      previewToggle?.classList.remove('active');
+      mobilePreviewBtn?.classList.remove('active');
+      document.body.classList.remove('preview-modal-open');
+    } else {
+      previewPanel.classList.add('open');
+      previewToggle?.classList.add('active');
+      mobilePreviewBtn?.classList.add('active');
+      if (window.innerWidth < 1024) {
+        document.body.classList.add('preview-modal-open');
+      }
+      if (typeof renderPreview === 'function') {
         renderPreview();
       }
+    }
+  }
+
+  if (previewToggle) {
+    previewToggle.addEventListener('click', togglePreviewPanel);
+  }
+
+  if (mobilePreviewBtn) {
+    mobilePreviewBtn.addEventListener('click', togglePreviewPanel);
+  }
+
+  if (previewClose) {
+    previewClose.addEventListener('click', () => {
+      previewPanel?.classList.remove('open');
+      previewToggle?.classList.remove('active');
+      mobilePreviewBtn?.classList.remove('active');
+      document.body.classList.remove('preview-modal-open');
     });
   }
 
-  if (previewClose && previewPanel && previewToggle) {
-    previewClose.addEventListener('click', () => {
-      previewPanel.classList.remove('open');
-      previewToggle.classList.remove('active');
+  // Backdrop click dismiss for mobile bottom-sheet
+  if (previewPanel) {
+    previewPanel.addEventListener('click', (e) => {
+      if (window.innerWidth < 1024 && e.target === previewPanel) {
+        previewPanel.classList.remove('open');
+        previewToggle?.classList.remove('active');
+        mobilePreviewBtn?.classList.remove('active');
+        document.body.classList.remove('preview-modal-open');
+      }
     });
   }
 

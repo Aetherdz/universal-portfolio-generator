@@ -2,11 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Universal Portfolio Generator — Elite Edition</title>
   <meta name="description" content="Generate sleek, responsive, and secure developer portfolios with 7 high-fidelity themes, instant GitHub Pages deployment, and multi-format exports.">
 
-  <!-- Google Fonts: Archivo, Space Grotesk, JetBrains Mono, Cairo -->
+  <!-- Google Fonts: Plus Jakarta Sans, Archivo, Space Grotesk, JetBrains Mono, Cairo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -28,16 +28,23 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Archivo', 'Cairo', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Archivo', 'Cairo', 'sans-serif'],
             display: ['Space Grotesk', 'Cairo', 'sans-serif'],
             mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
+            obsidian: {
+              DEFAULT: '#080B11',
+              card: '#0E131F',
+              subtle: '#141B2B',
+              border: 'rgba(255, 255, 255, 0.08)',
+              hover: '#192236'
+            },
             mono: {
-              50: '#f8f9fa', 100: '#f1f3f5', 200: '#e9ecef',
-              300: '#dee2e6', 400: '#ced4da', 500: '#adb5bd',
-              600: '#868e96', 700: '#495057', 800: '#343a40',
-              900: '#212529', 950: '#0d1117'
+              50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0',
+              300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b',
+              600: '#475569', 700: '#334155', 800: '#1e293b',
+              900: '#0f172a', 950: '#080b11'
             }
           }
         }
@@ -48,29 +55,29 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-mono-50 dark:bg-mono-950 text-mono-900 dark:text-mono-100 min-h-screen antialiased flex flex-col">
+<body class="bg-[#F8FAFC] dark:bg-[#080B11] text-[#0F172A] dark:text-[#F8FAFC] min-h-screen antialiased flex flex-col">
   <!-- Loading Overlay -->
-  <div id="loading-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-mono-900 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col items-center gap-4 max-w-xs w-full text-center border border-mono-200 dark:border-mono-800">
+  <div id="loading-overlay" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0E131F] rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col items-center gap-4 max-w-xs w-full text-center border border-mono-200 dark:border-white/[0.08]">
       <div class="w-12 h-12 border-[3.5px] border-blue-600 border-t-transparent rounded-full animate-spin"></div>
       <div>
-        <p class="text-sm font-semibold text-mono-800 dark:text-mono-100" id="loading-text">Processing...</p>
-        <p class="text-xs text-mono-400 dark:text-mono-500 mt-1">Please wait a moment</p>
+        <p class="text-sm font-semibold text-mono-900 dark:text-mono-100" id="loading-text">Processing...</p>
+        <p class="text-xs text-mono-500 dark:text-mono-400 mt-1">Please wait a moment</p>
       </div>
     </div>
   </div>
 
   <!-- Generate Confirmation Modal -->
-  <div id="generate-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-mono-900 border border-mono-200 dark:border-mono-800 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center animate-fadeIn">
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/20 text-white text-2xl">
+  <div id="generate-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0E131F] border border-mono-200 dark:border-white/[0.08] rounded-2xl shadow-2xl max-w-md w-full p-6 text-center animate-fadeIn">
+      <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-500/25 text-white text-2xl">
         <i class="fas fa-wand-magic-sparkles"></i>
       </div>
-      <h3 class="text-lg font-bold mb-2 tracking-tight" data-i18n="modal.generate.title">Ready to Generate Your Portfolio!</h3>
-      <p class="text-sm text-mono-500 dark:text-mono-400 mb-6" data-i18n="modal.generate.desc">Your responsive, secure portfolio will be prepared for export & deployment.</p>
+      <h3 class="text-lg font-bold mb-2 tracking-tight text-mono-900 dark:text-white" data-i18n="modal.generate.title">Ready to Generate Your Portfolio!</h3>
+      <p class="text-sm text-mono-600 dark:text-mono-300 mb-6" data-i18n="modal.generate.desc">Your responsive, secure portfolio will be prepared for export & deployment.</p>
       <div class="flex gap-3 justify-center">
-        <button id="modal-cancel" class="px-5 py-2.5 border border-mono-300 dark:border-mono-700 rounded-xl text-xs sm:text-sm font-semibold hover:bg-mono-100 dark:hover:bg-mono-800 transition" data-i18n="modal.cancel">Keep Editing</button>
-        <button id="modal-confirm" class="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md flex items-center gap-2">
+        <button id="modal-cancel" class="btn btn-secondary px-5 text-xs sm:text-sm" data-i18n="modal.cancel">Keep Editing</button>
+        <button id="modal-confirm" class="btn btn-primary px-6 text-xs sm:text-sm flex items-center gap-2">
           <i class="fas fa-rocket text-xs"></i>
           <span data-i18n="modal.generate.btn">Build Now!</span>
         </button>
@@ -79,54 +86,54 @@
   </div>
 
   <!-- Download Tip Modal -->
-  <div id="tip-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-mono-900 border border-mono-200 dark:border-mono-800 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center animate-fadeIn">
+  <div id="tip-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-white dark:bg-[#0E131F] border border-mono-200 dark:border-white/[0.08] rounded-2xl shadow-2xl max-w-md w-full p-6 text-center animate-fadeIn">
       <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-500/20 text-white text-2xl">
         <i class="fas fa-lightbulb"></i>
       </div>
-      <h3 class="text-base sm:text-lg font-bold mb-2" id="tip-modal-title">💡 Pro Tip</h3>
+      <h3 class="text-base sm:text-lg font-bold mb-2 text-mono-900 dark:text-white" id="tip-modal-title">💡 Pro Tip</h3>
       <p class="text-xs sm:text-sm text-mono-600 dark:text-mono-300 mb-6 leading-relaxed" id="tip-modal-text"></p>
-      <button id="tip-modal-ok" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md">Got it!</button>
+      <button id="tip-modal-ok" class="btn btn-success px-6 text-xs sm:text-sm">Got it!</button>
     </div>
   </div>
 
   <!-- Header -->
-  <header class="sticky top-0 z-30 bg-white/80 dark:bg-mono-950/80 backdrop-blur-xl border-b border-mono-200 dark:border-mono-800">
+  <header class="sticky top-0 z-30 bg-white/80 dark:bg-[#080B11]/85 backdrop-blur-xl border-b border-mono-200 dark:border-white/[0.08]">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="flex items-center justify-between h-16">
         <!-- Logo & Title -->
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-base shadow-sm">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white text-base shadow-md shadow-blue-500/20">
             <i class="fas fa-wand-magic-sparkles"></i>
           </div>
           <div>
-            <h1 class="text-sm sm:text-base font-bold font-display tracking-tight leading-none" data-i18n="app.title">Universal Portfolio Generator</h1>
-            <span class="text-[10px] text-mono-400 dark:text-mono-500 font-mono hidden sm:inline">v2.5 · Elite Edition</span>
+            <h1 class="text-sm sm:text-base font-bold font-display tracking-tight leading-none text-mono-900 dark:text-white" data-i18n="app.title">Universal Portfolio Generator</h1>
+            <span class="text-[10px] text-mono-400 dark:text-mono-400 font-mono hidden sm:inline">v2.5 · Elite Edition</span>
           </div>
         </div>
 
         <!-- Header Actions -->
         <div class="flex items-center gap-2">
           <!-- Quick Demo Button -->
-          <button type="button" onclick="FormState.loadDemoData()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-200 dark:border-blue-900 bg-blue-50/70 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 hover:bg-blue-100 transition text-xs font-semibold" title="Load sample portfolio data">
-            <i class="fas fa-wand-magic-sparkles text-[11px]"></i>
+          <button type="button" onclick="FormState.loadDemoData()" class="btn btn-secondary btn-sm hidden sm:inline-flex text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-900/60 hover:border-blue-400" title="Load sample portfolio data">
+            <i class="fas fa-wand-magic-sparkles text-xs"></i>
             <span data-i18n="btn.demo">Load Demo</span>
           </button>
 
           <!-- Preview Toggle -->
-          <button id="preview-toggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition shadow-sm" title="Toggle Live Preview">
+          <button id="preview-toggle" class="btn btn-primary btn-sm flex items-center gap-1.5" title="Toggle Live Preview">
             <i class="fas fa-eye text-xs"></i>
             <span class="hidden sm:inline" data-i18n="app.preview">Preview</span>
           </button>
 
           <!-- Language Switcher -->
-          <button id="lang-toggle" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-mono-300 dark:border-mono-700 hover:bg-mono-100 dark:hover:bg-mono-800 transition text-xs font-semibold" title="Switch Language">
+          <button id="lang-toggle" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3" title="Switch Language">
             <i class="fas fa-globe text-blue-600 dark:text-blue-400 text-xs"></i>
             <span id="lang-label">عربي</span>
           </button>
 
           <!-- Theme Toggle -->
-          <button id="theme-toggle" class="p-2 rounded-lg border border-mono-300 dark:border-mono-700 hover:bg-mono-100 dark:hover:bg-mono-800 transition text-mono-600 dark:text-mono-300" title="Toggle dark mode" aria-label="Toggle dark mode">
+          <button id="theme-toggle" class="btn btn-secondary btn-sm btn-icon" title="Toggle dark mode" aria-label="Toggle dark mode">
             <i class="fas fa-moon text-xs"></i>
           </button>
         </div>
@@ -134,83 +141,86 @@
     </div>
   </header>
 
-  <!-- Step Progress Indicator -->
-  <div id="step-indicator" class="max-w-6xl mx-auto px-4 sm:px-6 pt-5 pb-3 w-full">
-    <div class="flex items-center justify-between sm:justify-center gap-1 sm:gap-2">
+  <!-- Step Progress Indicator (Mobile-First Scrollable Stepper) -->
+  <div id="step-indicator" class="max-w-6xl mx-auto px-4 sm:px-6 pt-4 sm:pt-6 pb-2 sm:pb-3 w-full">
+    <div class="stepper-container no-scrollbar">
       <div class="step-dot active" data-step="1" title="Personal Profile">
-        <i class="fas fa-user text-xs"></i>
+        <i class="fas fa-user"></i>
         <span class="step-label" data-i18n="app.step1">Profile</span>
       </div>
       <div class="step-line"><div class="step-progress"></div></div>
       <div class="step-dot" data-step="2" title="Social Channels">
-        <i class="fas fa-share-nodes text-xs"></i>
+        <i class="fas fa-share-nodes"></i>
         <span class="step-label" data-i18n="app.step2">Social</span>
       </div>
       <div class="step-line"><div class="step-progress"></div></div>
       <div class="step-dot" data-step="3" title="Skills & Tech">
-        <i class="fas fa-code text-xs"></i>
+        <i class="fas fa-code"></i>
         <span class="step-label" data-i18n="app.step3">Skills</span>
       </div>
       <div class="step-line"><div class="step-progress"></div></div>
       <div class="step-dot" data-step="4" title="Featured Work">
-        <i class="fas fa-folder-open text-xs"></i>
+        <i class="fas fa-folder-open"></i>
         <span class="step-label" data-i18n="app.step4">Projects</span>
       </div>
       <div class="step-line"><div class="step-progress"></div></div>
       <div class="step-dot" data-step="5" title="Design Theme">
-        <i class="fas fa-palette text-xs"></i>
+        <i class="fas fa-palette"></i>
         <span class="step-label" data-i18n="app.step5">Theme</span>
       </div>
     </div>
   </div>
 
   <!-- Main Content Area -->
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 flex-1 w-full">
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pb-28 sm:pb-14 flex-1 w-full">
     <div class="flex gap-6 items-start">
       <!-- Form Panel -->
       <div id="form-panel" class="flex-1 min-w-0 transition-all duration-300">
-        <div class="bg-white dark:bg-mono-900 rounded-2xl shadow-sm border border-mono-200 dark:border-mono-800 p-5 sm:p-7">
+        <div class="bg-white dark:bg-[#0E131F] rounded-2xl shadow-sm dark:shadow-xl border border-mono-200 dark:border-white/[0.08] p-4 sm:p-7">
           <div id="form-container"></div>
         </div>
       </div>
 
-      <!-- Live Preview Panel (Drawer / Split Panel) -->
+      <!-- Live Preview Panel (Desktop Sidebar / Mobile Bottom-Sheet Modal) -->
       <div id="preview-panel" class="hidden w-[420px] flex-shrink-0 transition-all duration-300">
-        <div class="sticky top-20 bg-white dark:bg-mono-900 rounded-2xl border border-mono-200 dark:border-mono-800 shadow-xl overflow-hidden">
-          <!-- Preview Window Mock Titlebar -->
-          <div class="px-4 py-3 bg-mono-100/80 dark:bg-mono-950/80 border-b border-mono-200 dark:border-mono-800 flex items-center justify-between">
+        <div class="preview-card-shell sticky top-20 bg-white dark:bg-[#0E131F] rounded-2xl border border-mono-200 dark:border-white/[0.08] shadow-2xl overflow-hidden">
+          <!-- Mobile Bottom-Sheet Drag Handle -->
+          <div class="w-12 h-1.5 rounded-full bg-mono-300 dark:bg-white/20 mx-auto mt-2.5 mb-1 lg:hidden"></div>
+
+          <!-- Preview Window Titlebar Mockup -->
+          <div class="px-4 py-3 bg-mono-100/80 dark:bg-[#080B11]/90 border-b border-mono-200 dark:border-white/[0.08] flex items-center justify-between">
             <div class="flex items-center gap-1.5">
               <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
-              <span class="text-[11px] font-semibold text-mono-500 ml-2 uppercase tracking-wider">Live Preview</span>
+              <span class="text-[11px] font-semibold text-mono-500 dark:text-mono-400 ml-2 uppercase tracking-wider">Live Preview</span>
             </div>
 
             <!-- Viewport & Window Action Buttons -->
             <div class="flex items-center gap-1">
-              <button type="button" class="viewport-btn active p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition" data-viewport="desktop" title="Desktop view">
+              <button type="button" class="viewport-btn active p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition" data-viewport="desktop" title="Desktop view">
                 <i class="fas fa-desktop"></i>
               </button>
-              <button type="button" class="viewport-btn p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition" data-viewport="tablet" title="Tablet view">
+              <button type="button" class="viewport-btn p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition" data-viewport="tablet" title="Tablet view">
                 <i class="fas fa-tablet-screen-button"></i>
               </button>
-              <button type="button" class="viewport-btn p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition" data-viewport="mobile" title="Mobile view">
+              <button type="button" class="viewport-btn p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition" data-viewport="mobile" title="Mobile view">
                 <i class="fas fa-mobile-screen-button"></i>
               </button>
-              <button type="button" id="preview-expand" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition text-mono-600 dark:text-mono-300" title="Expand preview width">
+              <button type="button" id="preview-expand" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition text-mono-600 dark:text-mono-300 hidden lg:inline-flex" title="Expand preview width">
                 <i class="fas fa-expand-arrows-alt"></i>
               </button>
-              <button type="button" id="preview-newtab" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition text-blue-600 dark:text-blue-400" title="Open in new window">
+              <button type="button" id="preview-newtab" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition text-blue-600 dark:text-blue-400" title="Open in new window">
                 <i class="fas fa-arrow-up-right-from-square"></i>
               </button>
-              <button type="button" id="preview-close" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-mono-700 hover:bg-mono-200 dark:hover:bg-mono-800 transition text-mono-400 hover:text-rose-600" title="Close preview">
+              <button type="button" id="preview-close" class="p-1.5 rounded-lg text-xs border border-mono-300 dark:border-white/10 hover:bg-mono-200 dark:hover:bg-white/10 transition text-mono-400 hover:text-rose-600" title="Close preview">
                 <i class="fas fa-times"></i>
               </button>
             </div>
           </div>
 
           <!-- Preview Iframe Frame Wrapper -->
-          <div id="preview-wrapper" class="bg-mono-950 transition-all flex items-center justify-center p-0">
+          <div id="preview-wrapper" class="bg-mono-950 transition-all flex items-center justify-center p-0 flex-1">
             <iframe id="preview-frame" class="w-full h-[540px] transition-all bg-white" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
           </div>
         </div>
@@ -218,11 +228,28 @@
     </div>
   </main>
 
+  <!-- Mobile Sticky Action Bar (Back / Quick Preview / Next Step) -->
+  <nav id="mobile-action-bar" class="fixed bottom-0 inset-x-0 z-40 bg-white/95 dark:bg-[#080B11]/95 backdrop-blur-xl border-t border-mono-200 dark:border-white/[0.08] p-3 sm:hidden shadow-2xl safe-area-bottom">
+    <div class="flex items-center gap-2 max-w-md mx-auto">
+      <button id="mobile-btn-prev" type="button" class="btn btn-secondary flex-1 py-3 text-xs" onclick="prevStep()">
+        <i class="fas fa-arrow-left text-xs"></i>
+        <span data-i18n="btn.prev">Back</span>
+      </button>
+      <button id="mobile-btn-preview" type="button" class="btn btn-secondary px-3.5 py-3 text-xs" title="Live Preview">
+        <i class="fas fa-eye text-sm text-blue-500"></i>
+      </button>
+      <button id="mobile-btn-next" type="button" class="btn btn-primary flex-[2] py-3 text-xs" onclick="nextStep()">
+        <span id="mobile-next-text" data-i18n="btn.next">Next Step</span>
+        <i id="mobile-next-icon" class="fas fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+  </nav>
+
   <!-- Footer / Completion Actions (Shown upon generation) -->
-  <footer id="completion-footer" class="border-t border-mono-200 dark:border-mono-800 bg-white/90 dark:bg-mono-950/90 backdrop-blur-md hidden transition-all duration-300 mt-auto">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6">
-      <div class="text-center mb-4">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">
+  <footer id="completion-footer" class="border-t border-mono-200 dark:border-white/[0.08] bg-white/95 dark:bg-[#080B11]/95 backdrop-blur-md hidden transition-all duration-300 mt-auto pb-20 sm:pb-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+      <div class="text-center mb-5">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 text-xs font-semibold shadow-sm">
           <i class="fas fa-check-circle"></i>
           <span data-i18n="export.success">Portfolio ready! Choose your preferred deployment or export option:</span>
         </span>
@@ -230,31 +257,31 @@
 
       <div id="completion-actions" class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
         <!-- ZIP Download -->
-        <button id="btn-zip" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md hover:shadow-lg">
+        <button id="btn-zip" class="btn btn-primary px-5 py-3 text-xs sm:text-sm">
           <i class="fas fa-file-zipper text-xs"></i>
           <span data-i18n="export.zip">Download Complete ZIP</span>
         </button>
 
         <!-- Standalone HTML Download -->
-        <button id="btn-html" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-mono-800 hover:bg-mono-900 dark:bg-mono-800 dark:hover:bg-mono-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md">
+        <button id="btn-html" class="btn btn-secondary px-5 py-3 text-xs sm:text-sm">
           <i class="fas fa-file-code text-xs"></i>
           <span data-i18n="export.html">Download HTML</span>
         </button>
 
         <!-- Copy HTML to Clipboard -->
-        <button id="btn-copy-html" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 border border-mono-300 dark:border-mono-700 hover:bg-mono-100 dark:hover:bg-mono-800 text-mono-800 dark:text-mono-200 rounded-xl text-xs sm:text-sm font-semibold transition shadow-sm">
+        <button id="btn-copy-html" class="btn btn-secondary px-5 py-3 text-xs sm:text-sm">
           <i class="fas fa-copy text-xs text-blue-500"></i>
           <span data-i18n="export.copyHtml">Copy HTML</span>
         </button>
 
         <!-- Open in New Tab -->
-        <button id="btn-tab" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 border border-mono-300 dark:border-mono-700 hover:bg-mono-100 dark:hover:bg-mono-800 text-mono-800 dark:text-mono-200 rounded-xl text-xs sm:text-sm font-semibold transition shadow-sm">
+        <button id="btn-tab" class="btn btn-secondary px-5 py-3 text-xs sm:text-sm">
           <i class="fas fa-external-link-alt text-xs text-indigo-500"></i>
           <span data-i18n="export.openTab">Open in New Tab</span>
         </button>
 
         <!-- GitHub Deploy Toggle -->
-        <button id="btn-deploy" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition shadow-md">
+        <button id="btn-deploy" class="btn btn-success px-5 py-3 text-xs sm:text-sm">
           <i class="fab fa-github text-xs"></i>
           <span data-i18n="export.deploy">Deploy to GitHub Pages</span>
         </button>
@@ -262,25 +289,25 @@
 
       <!-- Deploy to GitHub Section -->
       <div id="deploy-section" class="hidden max-w-md mx-auto mt-6">
-        <div class="bg-white dark:bg-mono-900 border border-mono-200 dark:border-mono-800 rounded-2xl p-5 shadow-lg space-y-3.5">
-          <div class="flex items-center gap-2.5 pb-2 border-b border-mono-200 dark:border-mono-800">
-            <i class="fab fa-github text-xl text-mono-800 dark:text-mono-200"></i>
+        <div class="bg-white dark:bg-[#0E131F] border border-mono-200 dark:border-white/[0.08] rounded-2xl p-5 sm:p-6 shadow-xl space-y-3.5">
+          <div class="flex items-center gap-2.5 pb-2 border-b border-mono-200 dark:border-white/[0.08]">
+            <i class="fab fa-github text-xl text-mono-900 dark:text-white"></i>
             <div>
-              <span class="text-sm font-bold text-mono-900 dark:text-mono-100 block">Deploy to GitHub Pages</span>
-              <span class="text-[11px] text-mono-400">Creates or updates repository &amp; enables Pages</span>
+              <span class="text-sm font-bold text-mono-900 dark:text-white block">Deploy to GitHub Pages</span>
+              <span class="text-[11px] text-mono-500 dark:text-mono-400">Creates or updates repository &amp; enables Pages</span>
             </div>
           </div>
           <div>
-            <label class="block text-xs font-semibold mb-1 text-mono-600 dark:text-mono-400">GitHub Username</label>
-            <input type="text" id="deploy-username" class="w-full px-3 py-2 rounded-xl border border-mono-300 dark:border-mono-700 bg-mono-50 dark:bg-mono-950 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="e.g. your-github-handle">
+            <label class="block text-xs font-semibold mb-1 text-mono-700 dark:text-mono-300">GitHub Username</label>
+            <input type="text" id="deploy-username" class="form-input text-sm" placeholder="e.g. your-github-handle">
           </div>
           <div>
-            <label class="block text-xs font-semibold mb-1 text-mono-600 dark:text-mono-400">Personal Access Token</label>
-            <input type="password" id="pat-input" class="w-full px-3 py-2 rounded-xl border border-mono-300 dark:border-mono-700 bg-mono-50 dark:bg-mono-950 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="ghp_xxxxxxxxxxxx">
-            <p class="text-[11px] text-mono-400 mt-1">Requires <code class="px-1.5 py-0.5 rounded bg-mono-200 dark:bg-mono-800 text-[10px]">repo</code> scope. Used once in browser memory, never saved.</p>
+            <label class="block text-xs font-semibold mb-1 text-mono-700 dark:text-mono-300">Personal Access Token</label>
+            <input type="password" id="pat-input" class="form-input text-sm" placeholder="ghp_xxxxxxxxxxxx">
+            <p class="text-[11px] text-mono-500 dark:text-mono-400 mt-1">Requires <code class="px-1.5 py-0.5 rounded bg-mono-200 dark:bg-white/10 text-[10px]">repo</code> scope. Used once in browser memory, never saved.</p>
           </div>
           <div id="deploy-result"></div>
-          <button id="btn-deploy-go" class="w-full py-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white rounded-xl text-xs sm:text-sm font-bold transition shadow-md flex items-center justify-center gap-2">
+          <button id="btn-deploy-go" class="btn btn-success w-full py-3 text-xs sm:text-sm font-bold shadow-md flex items-center justify-center gap-2">
             <i class="fas fa-rocket text-xs"></i>
             <span>Publish to GitHub Pages</span>
           </button>
@@ -302,7 +329,19 @@
   <script src="js/i18n.js"></script>
   <script src="js/utils.js"></script>
   <script src="js/design-tokens.js"></script>
+
+  <!-- Modular Theme System -->
+  <script src="js/themes/registry.js"></script>
+  <script src="js/themes/aether.js"></script>
+  <script src="js/themes/terminal.js"></script>
+  <script src="js/themes/minimal.js"></script>
+  <script src="js/themes/bento.js"></script>
+  <script src="js/themes/glassmorphic.js"></script>
+  <script src="js/themes/dark-premium.js"></script>
+  <script src="js/themes/academic.js"></script>
   <script src="js/themes.js"></script>
+
+  <!-- Core Controllers & Orchestration -->
   <script src="js/form.js"></script>
   <script src="js/preview.js"></script>
   <script src="js/github.js"></script>
