@@ -138,6 +138,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // On desktop screens, activate live preview by default for immediate split-screen feedback
+  if (window.innerWidth >= 1200 && previewPanel) {
+    previewPanel.classList.add('open');
+    previewToggle?.classList.add('active');
+  }
+
   // Backdrop click dismiss for mobile bottom-sheet
   if (previewPanel) {
     previewPanel.addEventListener('click', (e) => {
