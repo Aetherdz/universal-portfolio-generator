@@ -1,6 +1,6 @@
 /* =============================================
-   js/form/step2-socials.js — Step 2: Social Channels
-   Universal Portfolio Generator — Next-Gen Studio
+   js/form/step2-socials.js — Step 2: Network & Channels
+   Universal Portfolio Studio — v3.8 Workbench Architecture
    ============================================= */
 
 (function (root, factory) {
@@ -18,43 +18,62 @@
     const isAr = typeof I18N !== 'undefined' && I18N.current === 'ar';
 
     const platforms = [
-      { key: 'github', label: 'GitHub', icon: 'fab fa-github', color: 'text-mono-900 dark:text-white', ph: 'username' },
-      { key: 'linkedin', label: 'LinkedIn', icon: 'fab fa-linkedin', color: 'text-blue-500', ph: 'username' },
-      { key: 'twitter', label: 'X (Twitter)', icon: 'fab fa-x-twitter', color: 'text-mono-900 dark:text-white', ph: 'username' },
-      { key: 'devto', label: 'DEV Community', icon: 'fab fa-dev', color: 'text-mono-800 dark:text-mono-200', ph: 'username' },
-      { key: 'hackerone', label: 'HackerOne', icon: 'fas fa-shield-halved', color: 'text-rose-500', ph: 'username' },
-      { key: 'telegram', label: 'Telegram', icon: 'fab fa-telegram', color: 'text-sky-400', ph: 'username' },
-      { key: 'medium', label: 'Medium', icon: 'fab fa-medium', color: 'text-mono-900 dark:text-white', ph: '@username' },
-      { key: 'blog', label: isAr ? 'الموقع الشخصي' : 'Personal Website', icon: 'fas fa-globe', color: 'text-emerald-500', ph: 'https://...' }
+      { key: 'github', label: 'GitHub', icon: 'fab fa-github', ph: 'username', prefix: 'github.com/' },
+      { key: 'linkedin', label: 'LinkedIn', icon: 'fab fa-linkedin-in', ph: 'username', prefix: 'linkedin.com/in/' },
+      { key: 'twitter', label: 'X (Twitter)', icon: 'fab fa-x-twitter', ph: 'handle', prefix: 'x.com/' },
+      { key: 'telegram', label: 'Telegram', icon: 'fab fa-telegram', ph: 'username', prefix: 't.me/' },
+      { key: 'hackerone', label: 'HackerOne', icon: 'fas fa-shield-halved', ph: 'username', prefix: 'hackerone.com/' },
+      { key: 'bugcrowd', label: 'Bugcrowd', icon: 'fas fa-bug', ph: 'username', prefix: 'bugcrowd.com/' },
+      { key: 'tryhackme', label: 'TryHackMe', icon: 'fas fa-mask', ph: 'username', prefix: 'tryhackme.com/p/' },
+      { key: 'hackthebox', label: 'HackTheBox', icon: 'fas fa-cube', ph: 'user ID', prefix: 'hackthebox.com/' },
+      { key: 'devto', label: 'DEV Community', icon: 'fab fa-dev', ph: 'username', prefix: 'dev.to/' },
+      { key: 'medium', label: 'Medium', icon: 'fab fa-medium', ph: 'username', prefix: 'medium.com/@' },
+      { key: 'stackoverflow', label: 'Stack Overflow', icon: 'fab fa-stack-overflow', ph: 'user ID', prefix: 'users/' },
+      { key: 'leetcode', label: 'LeetCode', icon: 'fas fa-code', ph: 'username', prefix: 'leetcode.com/u/' },
+      { key: 'youtube', label: 'YouTube', icon: 'fab fa-youtube', ph: 'channel', prefix: 'youtube.com/@' },
+      { key: 'blog', label: isAr ? 'الموقع الشخصي / المدونة' : 'Personal Website / Blog', icon: 'fas fa-globe', ph: 'https://yourdomain.com', prefix: '' }
     ];
+
+    const connectedCount = Object.values(s).filter(v => v && String(v).trim().length > 0).length;
 
     return `
       <!-- Step Header -->
-      <div class="flex items-center justify-between pb-3 mb-4 border-b border-mono-200 dark:border-white/10">
+      <div class="studio-step-header">
         <div>
-          <h2 class="text-base font-bold text-mono-900 dark:text-white flex items-center gap-2">
-            <i class="fas fa-share-nodes text-blue-500"></i>
+          <h2 class="studio-step-title">
+            <span class="step-icon-badge"><i class="fas fa-network-wired"></i></span>
             <span>${I18N.t('form.step.social')}</span>
           </h2>
-          <p class="text-xs text-mono-500 dark:text-mono-400 mt-0.5">${I18N.t('form.step.social_desc')}</p>
+          <p class="studio-step-desc">${I18N.t('form.step.social_desc')}</p>
+        </div>
+        <div class="channel-count-badge">
+          <span>${connectedCount} / ${platforms.length}</span>
+          <span class="channel-count-label">${isAr ? 'متصل' : 'Connected'}</span>
         </div>
       </div>
 
-      <!-- Socials Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-        ${platforms.map(p => `
-          <div class="form-group mb-0">
-            <label class="form-label flex items-center gap-1.5">
-              <i class="${p.icon} ${p.color} text-sm"></i>
-              <span>${p.label}</span>
-            </label>
-            <input class="form-input text-xs" data-social="${p.key}" value="${Utils.sanitize(s[p.key] || '')}" placeholder="${p.ph}" oninput="FormState.data.socials['${p.key}']=this.value;triggerPreview();">
-          </div>
-        `).join('')}
+      <!-- Social Channels 2-Col Grid -->
+      <div class="social-input-grid">
+        ${platforms.map(p => {
+          const val = Utils.sanitize(s[p.key] || '');
+          const isFilled = Boolean(val);
+          return `
+            <div class="social-input-card${isFilled ? ' filled' : ''}">
+              <div class="social-card-lead">
+                <span class="social-icon-box"><i class="${p.icon}"></i></span>
+                <span class="social-label-text">${p.label}</span>
+              </div>
+              <div class="social-input-field-wrap">
+                ${p.prefix ? `<span class="social-prefix">${p.prefix}</span>` : ''}
+                <input class="form-input text-xs" data-social="${p.key}" value="${val}" placeholder="${p.ph}" oninput="updateSocialChannel('${p.key}', this.value)">
+              </div>
+            </div>
+          `;
+        }).join('')}
       </div>
 
-      <!-- Step Navigation Buttons -->
-      <div class="flex items-center justify-between pt-4 border-t border-mono-200 dark:border-white/10 mt-6">
+      <!-- Step Navigation Footer -->
+      <div class="step-nav-footer">
         <button type="button" class="btn btn-secondary px-5" onclick="prevStep()">
           <i class="fas fa-arrow-left text-xs"></i>
           <span>${I18N.t('btn.prev')}</span>

@@ -3,179 +3,316 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Universal Portfolio Studio — Next-Gen Developer Architecture</title>
-  <meta name="description" content="Precision developer portfolio studio. 7 elevated themes, real-time device simulator, GitHub Pages sync, and instant zero-dependency export.">
+  <title>Universal Portfolio Studio — v3.8 Workbench</title>
+  <meta name="description" content="Precision developer portfolio studio. 7 signature architectures, real-time device simulator, GitHub Pages deployer, and zero-dependency export.">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <!-- Elite Typography: Plus Jakarta Sans, Space Grotesk, JetBrains Mono, Cairo -->
+  <!-- Elite Typography Stacks -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
   <!-- Icons: Devicon & Font Awesome 6.5.1 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Master Studio Stylesheet (Cache-Busted v2.6.0) -->
-  <link rel="stylesheet" href="css/style.css?v=2.6.0">
+  <!-- Core Studio Stylesheets (Tokens, Components, Workbench Layout & Master CSS) -->
+  <link rel="stylesheet" href="css/tokens.css?v=3.8.0">
+  <link rel="stylesheet" href="css/components.css?v=3.8.0">
+  <link rel="stylesheet" href="css/studio.css?v=3.8.0">
+  <link rel="stylesheet" href="css/style.css?v=3.8.0">
 </head>
 <body class="dark">
 
   <!-- Toast Notification Hub -->
-  <div id="toast-container"></div>
+  <div id="toast-container" class="wb-toast-container"></div>
 
-  <!-- Studio Top Navigation Bar -->
-  <nav class="studio-nav">
-    <div class="studio-nav-inner">
-      <!-- Brand Identity -->
-      <a href="./" class="brand-badge">
-        <div class="brand-icon">
-          <i class="fas fa-wand-magic-sparkles"></i>
-        </div>
-        <div>
-          <div class="brand-text-title">Universal Portfolio Studio</div>
-          <div class="brand-text-sub">v2.6 Precision Architecture · 7 Elevated Themes</div>
-        </div>
-      </a>
+  <!-- Master Workbench Shell -->
+  <div class="wb-shell">
 
-      <!-- Quick Nav Actions -->
-      <div class="nav-actions">
-        <!-- Quick Preview Toggle (Mobile Drawer) -->
-        <button id="preview-toggle" class="btn btn-secondary btn-sm lg:hidden" title="Toggle Live Preview">
-          <i class="fas fa-eye text-cyan-400"></i>
-          <span>Preview</span>
+    <!-- Top Command Bar (.wb-topbar) -->
+    <header class="wb-topbar">
+      <!-- Left: Brand Identity -->
+      <div class="wb-topbar-left">
+        <a href="./" class="wb-brand">
+          <div class="wb-brand-icon">
+            <i class="fas fa-wand-magic-sparkles"></i>
+          </div>
+          <div>
+            <span class="wb-brand-title">Universal Portfolio Studio</span>
+            <span class="wb-brand-version">v3.8 Workbench</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Persona Quick-Switcher & Command Palette Trigger -->
+      <div class="wb-topbar-center">
+        <!-- Persona Quick-Switcher Pills -->
+        <div class="wb-persona-strip">
+          <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('fullstack')" title="Load Full-Stack & Cloud Preset">
+            <span class="traffic-dot traffic-dot-green"></span>
+            <span>Full-Stack</span>
+          </button>
+          <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('cybersecurity')" title="Load Security & Bug Bounty Preset">
+            <span class="traffic-dot traffic-dot-red"></span>
+            <span>AppSec / Bug Bounty</span>
+          </button>
+          <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('creative')" title="Load Creative Technologist Preset">
+            <span class="traffic-dot traffic-dot-amber"></span>
+            <span>Creative UI</span>
+          </button>
+          <button type="button" class="wb-persona-pill" onclick="FormState.loadPersona('academic')" title="Load AI Researcher Preset">
+            <span class="traffic-dot traffic-dot-cyan"></span>
+            <span>AI Researcher</span>
+          </button>
+        </div>
+
+        <!-- Command Palette Trigger Button -->
+        <button type="button" id="cmd-palette-trigger" class="wb-cmd-trigger" title="Open Command Palette (⌘K / Ctrl+K)">
+          <i class="fas fa-terminal"></i>
+          <span>Commands</span>
+          <span class="kbd-badge">⌘K</span>
+        </button>
+      </div>
+
+      <!-- Right: Completeness, Config, Language, Theme & Ship -->
+      <div class="wb-topbar-right">
+        <!-- Live Completeness Score Badge -->
+        <span id="score-pill" class="score-pill" title="Portfolio Completeness Score">
+          <i class="fas fa-circle-notch"></i>
+          <span>0% Ready</span>
+        </span>
+
+        <!-- Import / Export Config -->
+        <button type="button" class="btn btn-secondary btn-sm" onclick="importConfig()" title="Import Config JSON">
+          <i class="fas fa-file-import"></i>
+          <span class="hidden sm:inline">Import</span>
+        </button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="exportConfig()" title="Export Config JSON">
+          <i class="fas fa-file-export"></i>
+          <span class="hidden sm:inline">Export</span>
         </button>
 
-        <!-- Language Switcher -->
-        <button id="lang-toggle" class="btn btn-secondary btn-sm" title="Switch Language">
-          <i class="fas fa-globe text-blue-400 text-xs"></i>
+        <!-- Bilingual Switcher -->
+        <button id="lang-toggle" class="btn btn-secondary btn-sm" title="Toggle Language (EN / عربي)">
+          <i class="fas fa-globe"></i>
           <span id="lang-label">عربي</span>
         </button>
 
-        <!-- Theme Mode Toggle -->
+        <!-- Theme Toggle (Dark/Light) -->
         <button id="theme-toggle" class="btn btn-secondary btn-sm btn-icon" title="Toggle Dark/Light Mode" aria-label="Toggle theme">
-          <i class="fas fa-sun text-amber-400 text-xs"></i>
+          <i class="fas fa-sun text-amber-400"></i>
+        </button>
+
+        <!-- Quick Ship Primary CTA -->
+        <button type="button" class="btn btn-primary btn-sm" onclick="downloadHTML()" title="Download Single-File HTML">
+          <i class="fas fa-bolt"></i>
+          <span>Ship</span>
+        </button>
+
+        <!-- Mobile Live Preview Drawer Toggle -->
+        <button id="preview-toggle" class="btn btn-secondary btn-sm lg:hidden" title="Toggle Live Preview Drawer">
+          <i class="fas fa-eye text-accent"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Horizontal Stepper Strip (Shown on Small Displays) -->
+    <div class="mobile-stepper-strip" id="mobile-stepper">
+      <button type="button" class="mobile-step-pill active" data-step="1">01 Identity</button>
+      <button type="button" class="mobile-step-pill" data-step="2">02 Network</button>
+      <button type="button" class="mobile-step-pill" data-step="3">03 Arsenal</button>
+      <button type="button" class="mobile-step-pill" data-step="4">04 Work</button>
+      <button type="button" class="mobile-step-pill" data-step="5">05 Ship</button>
+    </div>
+
+    <!-- 3-Zone Developer Workbench Main -->
+    <main class="wb-main">
+
+      <!-- Zone 2A: Left Architectural Step Rail (.wb-rail) -->
+      <aside class="wb-rail" id="step-indicator">
+        <div class="wb-rail-list">
+          <button type="button" class="wb-rail-tab active" data-step="1">
+            <span class="wb-rail-num">01</span>
+            <div class="wb-rail-text">
+              <div class="wb-rail-title">Profile &amp; Identity</div>
+              <span class="wb-rail-sub" id="rail-sub-1">Required</span>
+            </div>
+          </button>
+
+          <button type="button" class="wb-rail-tab" data-step="2">
+            <span class="wb-rail-num">02</span>
+            <div class="wb-rail-text">
+              <div class="wb-rail-title">Network &amp; Channels</div>
+              <span class="wb-rail-sub" id="rail-sub-2">0 channels</span>
+            </div>
+          </button>
+
+          <button type="button" class="wb-rail-tab" data-step="3">
+            <span class="wb-rail-num">03</span>
+            <div class="wb-rail-text">
+              <div class="wb-rail-title">Technical Arsenal</div>
+              <span class="wb-rail-sub" id="rail-sub-3">0 skills</span>
+            </div>
+          </button>
+
+          <button type="button" class="wb-rail-tab" data-step="4">
+            <span class="wb-rail-num">04</span>
+            <div class="wb-rail-text">
+              <div class="wb-rail-title">Work &amp; Credentials</div>
+              <span class="wb-rail-sub" id="rail-sub-4">0 proj · 0 exp</span>
+            </div>
+          </button>
+
+          <button type="button" class="wb-rail-tab" data-step="5">
+            <span class="wb-rail-num">05</span>
+            <div class="wb-rail-text">
+              <div class="wb-rail-title">Theme &amp; Deployment</div>
+              <span class="wb-rail-sub" id="rail-sub-5">Aether</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Studio Stats / Health Card -->
+        <div class="wb-rail-stats">
+          <div class="wb-health-head">
+            <span class="wb-health-label">Studio Health</span>
+            <span class="bio-counter" id="rail-score-text">0% Complete</span>
+          </div>
+          <div class="wb-health-bar">
+            <div class="wb-health-fill" id="rail-score-fill"></div>
+          </div>
+          <div class="wb-rail-shortcuts">
+            <span>Palette</span>
+            <kbd class="kbd-badge">⌘K</kbd>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Zone 2B: Center Inspector / Form Editor (.wb-editor) -->
+      <section class="wb-editor" id="form-panel">
+        <div class="wb-editor-inner" id="form-container">
+          <!-- Injected dynamically by js/form/ step modules -->
+        </div>
+      </section>
+
+      <!-- Zone 2C: Right Interactive Device Simulator Stage (.wb-stage) -->
+      <section class="wb-stage" id="preview-panel">
+        <!-- Simulator Titlebar Mockup -->
+        <div class="simulator-titlebar">
+          <!-- Traffic Lights -->
+          <div class="mac-traffic-lights">
+            <span class="traffic-dot traffic-dot-red"></span>
+            <span class="traffic-dot traffic-dot-amber"></span>
+            <span class="traffic-dot traffic-dot-green"></span>
+          </div>
+
+          <!-- Editable URL Bar -->
+          <div class="mock-url-bar">
+            <i class="fas fa-lock text-[10px] text-accent"></i>
+            <span id="simulator-url">https://portfolio.github.io/portfolio</span>
+          </div>
+
+          <!-- Controls: Live Theme Switcher Dropdown + Viewports + Actions -->
+          <div class="simulator-controls">
+            <!-- Quick Theme Switcher Select: Test all 7 themes from ANY step! -->
+            <select id="preview-theme-select" class="preview-theme-dropdown" title="Quick Theme Switcher (Available from any step)">
+              <option value="1">Theme 1: Aether</option>
+              <option value="2">Theme 2: Terminal</option>
+              <option value="3">Theme 3: Minimal</option>
+              <option value="4">Theme 4: Bento Grid</option>
+              <option value="5">Theme 5: Glassmorphic</option>
+              <option value="6">Theme 6: Dark Premium</option>
+              <option value="7">Theme 7: Academic</option>
+            </select>
+
+            <!-- Viewport Switcher -->
+            <button type="button" class="sim-btn active" data-viewport="desktop" title="Desktop Viewport (100%)">
+              <i class="fas fa-desktop"></i>
+            </button>
+            <button type="button" class="sim-btn" data-viewport="tablet" title="Tablet Viewport (768px)">
+              <i class="fas fa-tablet-screen-button"></i>
+            </button>
+            <button type="button" class="sim-btn" data-viewport="mobile" title="Mobile Viewport (375px)">
+              <i class="fas fa-mobile-screen"></i>
+            </button>
+
+            <!-- Refresh Preview -->
+            <button type="button" id="preview-refresh" class="sim-btn" title="Refresh Live Preview">
+              <i class="fas fa-arrows-rotate"></i>
+            </button>
+
+            <!-- Open in New Tab -->
+            <button type="button" id="preview-newtab" class="sim-btn text-accent" title="Open Full-Screen in New Tab">
+              <i class="fas fa-arrow-up-right-from-square"></i>
+            </button>
+
+            <!-- Close Drawer (Mobile) -->
+            <button type="button" id="preview-close" class="sim-btn text-rose-500 lg:hidden" title="Close Preview Drawer">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Live Preview Iframe Sandbox Viewport -->
+        <div class="simulator-viewport desktop" id="preview-wrapper">
+          <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Mobile Sticky Bottom Action Bar -->
+    <div class="mobile-action-bar" id="mobile-action-bar">
+      <div style="display:flex;align-items:center;gap:0.5rem;max-width:480px;margin:0 auto">
+        <button id="mobile-btn-prev" type="button" class="btn btn-secondary" style="flex:1" onclick="prevStep()">
+          <i class="fas fa-arrow-left text-xs"></i>
+          <span>Back</span>
+        </button>
+        <button id="mobile-btn-preview" type="button" class="btn btn-secondary btn-icon" title="Toggle Live Preview">
+          <i class="fas fa-eye text-accent"></i>
+        </button>
+        <button id="mobile-btn-next" type="button" class="btn btn-primary" style="flex:2" onclick="nextStep()">
+          <span id="mobile-next-text">Next Stage</span>
+          <i class="fas fa-arrow-right text-xs"></i>
         </button>
       </div>
     </div>
-  </nav>
 
-  <!-- Instant Persona Launchpad -->
-  <div class="persona-strip">
-    <span class="persona-strip-label">
-      <i class="fas fa-bolt text-amber-400"></i>
-      <span>Fast Presets:</span>
-    </span>
-    <button type="button" class="persona-btn" onclick="FormState.loadPersona('fullstack')">
-      <span class="traffic-dot traffic-dot-green"></span>
-      <span>💻 Full-Stack & Cloud</span>
-    </button>
-    <button type="button" class="persona-btn" onclick="FormState.loadPersona('cybersecurity')">
-      <span class="traffic-dot traffic-dot-red"></span>
-      <span>🛡️ Security & Bug Bounty</span>
-    </button>
-    <button type="button" class="persona-btn" onclick="FormState.loadPersona('creative')">
-      <span class="traffic-dot traffic-dot-amber"></span>
-      <span>🎨 Creative & Bento UI</span>
-    </button>
-    <button type="button" class="persona-btn" onclick="FormState.loadPersona('academic')">
-      <span class="traffic-dot traffic-dot-green"></span>
-      <span>🎓 AI Researcher & Academic</span>
-    </button>
   </div>
 
-  <!-- Main Split Studio Canvas -->
-  <main class="studio-canvas">
-
-    <!-- Left Column: The Blueprint Editor -->
-    <div class="blueprint-card" id="form-panel">
-      <!-- High-Craft Step Stepper -->
-      <div class="blueprint-stepper" id="step-indicator">
-        <button type="button" class="step-tab active" data-step="1">
-          <i class="fas fa-user"></i>
-          <span>1. Profile</span>
-        </button>
-        <button type="button" class="step-tab" data-step="2">
-          <i class="fas fa-share-nodes"></i>
-          <span>2. Socials</span>
-        </button>
-        <button type="button" class="step-tab" data-step="3">
-          <i class="fas fa-code"></i>
-          <span>3. Tech Stack</span>
-        </button>
-        <button type="button" class="step-tab" data-step="4">
-          <i class="fas fa-folder-open"></i>
-          <span>4. Projects</span>
-        </button>
-        <button type="button" class="step-tab" data-step="5">
-          <i class="fas fa-palette"></i>
-          <span>5. Theme</span>
-        </button>
+  <!-- Command Palette Modal (#cmd-palette-modal) -->
+  <div id="cmd-palette-modal" class="cmd-modal-overlay hidden" style="display:none;">
+    <div class="cmd-palette-box">
+      <div class="cmd-search-wrap">
+        <i class="fas fa-magnifying-glass cmd-search-icon"></i>
+        <input type="text" id="cmd-search-input" class="cmd-search-input" placeholder="Type a command or search actions..." autocomplete="off">
+        <kbd class="kbd-badge">ESC</kbd>
       </div>
-
-      <!-- Step Content Area -->
-      <div class="blueprint-content" id="form-container">
-        <!-- Injected dynamically by js/form/ step modules -->
+      <div class="cmd-list" id="cmd-list">
+        <!-- Rendered dynamically by js/app.js -->
       </div>
     </div>
+  </div>
 
-    <!-- Right Column: Live Interactive Device Frame Simulator -->
-    <div class="simulator-card hidden lg:flex" id="preview-panel">
-      <!-- Titlebar Mockup -->
-      <div class="simulator-titlebar">
-        <div class="mac-traffic-lights">
-          <span class="traffic-dot traffic-dot-red"></span>
-          <span class="traffic-dot traffic-dot-amber"></span>
-          <span class="traffic-dot traffic-dot-green"></span>
-        </div>
-
-        <div class="mock-url-bar" id="simulator-url">
-          <i class="fas fa-lock text-[10px] text-emerald-400"></i>
-          <span>https://developer.studio/portfolio</span>
-        </div>
-
-        <div class="simulator-controls">
-          <button type="button" class="sim-btn active" data-viewport="desktop" title="Desktop view">
-            <i class="fas fa-desktop"></i>
-          </button>
-          <button type="button" class="sim-btn" data-viewport="tablet" title="Tablet view">
-            <i class="fas fa-tablet-alt"></i>
-          </button>
-          <button type="button" class="sim-btn" data-viewport="mobile" title="Mobile view">
-            <i class="fas fa-mobile-alt"></i>
-          </button>
-          <button type="button" id="preview-newtab" class="sim-btn text-blue-400" title="Open preview in new tab">
-            <i class="fas fa-arrow-up-right-from-square"></i>
-          </button>
-          <button type="button" id="preview-close" class="sim-btn text-rose-400 lg:hidden" title="Close drawer">
-            <i class="fas fa-times"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Live Preview Iframe Sandbox -->
-      <div class="simulator-viewport desktop" id="preview-wrapper">
-        <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" srcdoc=""></iframe>
-      </div>
+  <!-- Loading Overlay (#loading-overlay) -->
+  <div id="loading-overlay" class="wb-modal-overlay hidden" style="display:none;">
+    <div class="loading-box">
+      <div class="loading-spinner"></div>
+      <span id="loading-text" class="loading-text">Synthesizing responsive portfolio...</span>
     </div>
-  </main>
+  </div>
 
-  <!-- Mobile Sticky Bottom Action Bar -->
-  <div class="mobile-action-bar sm:hidden" id="mobile-action-bar">
-    <div style="display:flex;align-items:center;gap:0.5rem;max-width:480px;margin:0 auto">
-      <button id="mobile-btn-prev" type="button" class="btn btn-secondary" style="flex:1;padding:0.75rem" onclick="prevStep()">
-        <i class="fas fa-arrow-left text-xs"></i>
-        <span>Back</span>
-      </button>
-      <button id="mobile-btn-preview" type="button" class="btn btn-secondary" style="padding:0.75rem 1rem" title="Live Preview">
-        <i class="fas fa-eye text-blue-400"></i>
-      </button>
-      <button id="mobile-btn-next" type="button" class="btn btn-primary" style="flex:2;padding:0.75rem" onclick="nextStep()">
-        <span id="mobile-next-text">Next</span>
-        <i class="fas fa-arrow-right text-xs"></i>
-      </button>
+  <!-- Pro Tip Modal (#tip-modal) -->
+  <div id="tip-modal" class="wb-modal-overlay hidden" style="display:none;">
+    <div class="tip-modal-card">
+      <h3 id="tip-modal-title" class="tip-modal-title">💡 Pro Tip</h3>
+      <p id="tip-modal-text" class="tip-modal-text"></p>
+      <div style="text-align: right;">
+        <button type="button" id="tip-modal-ok" class="btn btn-primary btn-sm px-4">Got it</button>
+      </div>
     </div>
   </div>
 
@@ -186,35 +323,35 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
   <!-- Modular Utilities & System Tokens -->
-  <script src="js/i18n.js?v=2.6.0"></script>
-  <script src="js/utils.js?v=2.6.0"></script>
-  <script src="js/design-tokens.js?v=2.6.0"></script>
+  <script src="js/i18n.js?v=3.8.0"></script>
+  <script src="js/utils.js?v=3.8.0"></script>
+  <script src="js/design-tokens.js?v=3.8.0"></script>
 
   <!-- Modular 7-Theme Architecture -->
-  <script src="js/themes/registry.js?v=2.6.0"></script>
-  <script src="js/themes/aether.js?v=2.6.0"></script>
-  <script src="js/themes/terminal.js?v=2.6.0"></script>
-  <script src="js/themes/minimal.js?v=2.6.0"></script>
-  <script src="js/themes/bento.js?v=2.6.0"></script>
-  <script src="js/themes/glassmorphic.js?v=2.6.0"></script>
-  <script src="js/themes/dark-premium.js?v=2.6.0"></script>
-  <script src="js/themes/academic.js?v=2.6.0"></script>
-  <script src="js/themes.js?v=2.6.0"></script>
+  <script src="js/themes/registry.js?v=3.8.0"></script>
+  <script src="js/themes/aether.js?v=3.8.0"></script>
+  <script src="js/themes/terminal.js?v=3.8.0"></script>
+  <script src="js/themes/minimal.js?v=3.8.0"></script>
+  <script src="js/themes/bento.js?v=3.8.0"></script>
+  <script src="js/themes/glassmorphic.js?v=3.8.0"></script>
+  <script src="js/themes/dark-premium.js?v=3.8.0"></script>
+  <script src="js/themes/academic.js?v=3.8.0"></script>
+  <script src="js/themes.js?v=3.8.0"></script>
 
   <!-- Modular Form Steps Architecture -->
-  <script src="js/form/state.js?v=2.6.0"></script>
-  <script src="js/form/step1-profile.js?v=2.6.0"></script>
-  <script src="js/form/step2-socials.js?v=2.6.0"></script>
-  <script src="js/form/step3-skills.js?v=2.6.0"></script>
-  <script src="js/form/step4-projects.js?v=2.6.0"></script>
-  <script src="js/form/step5-theme.js?v=2.6.0"></script>
-  <script src="js/form/actions.js?v=2.6.0"></script>
-  <script src="js/form.js?v=2.6.0"></script>
+  <script src="js/form/state.js?v=3.8.0"></script>
+  <script src="js/form/step1-profile.js?v=3.8.0"></script>
+  <script src="js/form/step2-socials.js?v=3.8.0"></script>
+  <script src="js/form/step3-skills.js?v=3.8.0"></script>
+  <script src="js/form/step4-projects.js?v=3.8.0"></script>
+  <script src="js/form/step5-theme.js?v=3.8.0"></script>
+  <script src="js/form/actions.js?v=3.8.0"></script>
+  <script src="js/form.js?v=3.8.0"></script>
 
-  <!-- Preview Engine, GitHub Sync & Master Orchestrator -->
-  <script src="js/preview.js?v=2.6.0"></script>
-  <script src="js/github.js?v=2.6.0"></script>
-  <script src="js/export.js?v=2.6.0"></script>
-  <script src="js/app.js?v=2.6.0"></script>
+  <!-- Live Device Preview Engine, Native GitHub Sync & Master Orchestrator -->
+  <script src="js/preview.js?v=3.8.0"></script>
+  <script src="js/github.js?v=3.8.0"></script>
+  <script src="js/export.js?v=3.8.0"></script>
+  <script src="js/app.js?v=3.8.0"></script>
 </body>
 </html>

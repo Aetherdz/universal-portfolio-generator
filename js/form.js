@@ -1,12 +1,12 @@
 /* =============================================
    js/form.js — Master Form Coordinator & Glue
-   Universal Portfolio Generator — Next-Gen Studio
+   Universal Portfolio Studio — v3.8 Workbench Architecture
    ============================================= */
 
 // Re-export methods on FormState for backwards compatibility
 if (typeof FormState !== 'undefined') {
   FormState.renderStep = function (step) {
-    this.currentStep = step;
+    this.currentStep = parseInt(step, 10);
     if (typeof renderCurrentStep === 'function') {
       renderCurrentStep();
     }
@@ -17,15 +17,18 @@ if (typeof FormState !== 'undefined') {
     if (typeof renderCurrentStep === 'function') {
       renderCurrentStep();
     }
+    if (typeof updateStepIndicator === 'function') {
+      updateStepIndicator();
+    }
   };
 }
 
-// Global hook for stepper dot & tab clicks
+// Global hook for stepper dot, rail tabs, and mobile pill clicks
 document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.step-tab, .step-dot').forEach(tab => {
+  document.querySelectorAll('.wb-rail-tab, .mobile-step-pill, .step-tab, .step-dot').forEach(tab => {
     tab.addEventListener('click', function () {
       const step = this.dataset.step;
-      if (typeof goToStep === 'function') {
+      if (step && typeof goToStep === 'function') {
         goToStep(step);
       }
     });

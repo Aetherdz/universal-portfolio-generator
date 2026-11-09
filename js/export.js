@@ -180,10 +180,21 @@ function importConfig() {
       const incoming = json.portfolio || json;
       if (incoming && (incoming.name !== undefined || incoming.skills !== undefined)) {
         Object.assign(FormState.data, incoming);
-        if (typeof FormState.autoSave === 'function') FormState.autoSave();
-        FormState.renderStep(FormState.currentStep);
+        if (Array.isArray(FormState.data.skills)) {
+          FormState.data.skills = FormState.data.skills.filter(s => {
+            return !Utils.isNonSkill || !Utils.isNonSkill(s);
+          });
+        }
+        if (!FormState.data.glassmorphism) {
+          FormState.data.glassmorphism = { blur: 16, opacity: 0.08, radius: 24 };
+        }
+        if (!Array.isArray(FormState.data.experience)) {
+          FormState.data.experience = [];
+        }
+        if (typeof FormState.saveToStorage === 'function') FormState.saveToStorage();
+        if (typeof renderCurrentStep === 'function') renderCurrentStep();
         if (typeof triggerPreview === 'function') triggerPreview();
-        Utils.showToast(isAr ? 'تم استيراد الإعدادات بنجاح!' : 'Configuration imported successfully!', 'success');
+        Utils.showToast(isAr ? 'تم استيراد الإعدادات وتطبيقها بنجاح!' : 'Configuration restored successfully!', 'success');
       } else {
         throw new Error('Unrecognized config schema');
       }

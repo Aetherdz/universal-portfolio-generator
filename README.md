@@ -6,54 +6,43 @@
 
 <p align="center">
   <samp>
-    <b>PortfolioGen</b> · <b>ارسم هويتك (Draw Your Profile)</b>
+    <b>Universal Portfolio Studio (v3.8)</b> · <b>ارسم هويتك (Draw Your Profile)</b>
   </samp>
   <br>
-  <sub>The high-performance, privacy-first portfolio builder for software engineers, security researchers, and digital creators.</sub>
+  <sub>Next-Gen Developer Workbench IDE for software engineers, security researchers, and systems architects.</sub>
 </p>
 
 <p align="center">
   <a href="#-key-features">✨ Features</a> &nbsp;•&nbsp;
-  <a href="#-live-demonstrations">🌐 Live Demos</a> &nbsp;•&nbsp;
-  <a href="#-modular-architecture">🏗️ Architecture</a> &nbsp;•&nbsp;
+  <a href="#-workbench-architecture">🖥️ 3-Zone Workbench</a> &nbsp;•&nbsp;
   <a href="#-the-7-signature-themes">🎨 Themes</a> &nbsp;•&nbsp;
   <a href="#-quick-start">🚀 Quick Start</a> &nbsp;•&nbsp;
-  <a href="#-extensibility-guide">🧩 Plugin Guide</a> &nbsp;•&nbsp;
+  <a href="#-modular-architecture">🏗️ Architecture</a> &nbsp;•&nbsp;
   <a href="#-security--privacy">🔒 Security</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/License-MIT-3b82f6?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License">
-  <img src="https://img.shields.io/badge/Architecture-100%25%20Modular-10b981?style=for-the-badge&logo=javascript&logoColor=white" alt="Modular Architecture">
+  <img src="https://img.shields.io/badge/Release-v3.8%20Workbench-3b82f6?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="v3.8 Workbench">
+  <img src="https://img.shields.io/badge/Architecture-3--Zone%20Workbench-10b981?style=for-the-badge&logo=javascript&logoColor=white" alt="3-Zone Workbench">
   <img src="https://img.shields.io/badge/RTL-Native%20Arabic%20%2B%20English-8b5cf6?style=for-the-badge" alt="Bilingual RTL">
-  <img src="https://img.shields.io/badge/Build%20Step-Zero%20(Pure%20Vanilla%20ES6)-f59e0b?style=for-the-badge&logo=fastapi&logoColor=white" alt="Zero Build Step">
+  <img src="https://img.shields.io/badge/Command%20Palette-%E2%8C%98K%20%2F%20Ctrl%2BK-f59e0b?style=for-the-badge" alt="Command Palette">
   <img src="https://img.shields.io/badge/Privacy-100%25%20Client--Side-ec4899?style=for-the-badge&logo=shield&logoColor=white" alt="Client-Side Only">
   <img src="https://img.shields.io/badge/Sanitization-DOMPurify%20Hardened-06b6d4?style=for-the-badge" alt="DOMPurify">
 </p>
 
 ---
 
-## 🌐 Live Demonstrations
-
-Experience the generator live in your browser with zero installation:
-
-| Provider | Production Endpoint | Deployment Type | Status |
-|:---|:---|:---|:---:|
-| **Vercel** | [universal-portfolio-generator.vercel.app](https://universal-portfolio-generator.vercel.app) | Edge CDN Static | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-| **Netlify** | [portfolio-generat.netlify.app](https://portfolio-generat.netlify.app) | Global Edge Network | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-| **GitHub Pages** | [aetherdz.github.io/universal-portfolio-generator](https://aetherdz.github.io/universal-portfolio-generator) | Direct Branch Serving | ![Active](https://img.shields.io/badge/ONLINE-brightgreen?style=flat-square) |
-
----
-
 ## 💡 Overview
 
-**PortfolioGen** is a modern, client-side web application engineered to generate developer portfolios, hacker résumés, and technical showcase sites in minutes. Designed from the ground up for speed, modularity, and privacy:
+**Universal Portfolio Studio v3.8** is an authentic developer workbench IDE (inspired by Linear, Raycast, and Framer) engineered to craft, preview, and ship high-fidelity portfolio sites in seconds.
 
-* **Zero Build Step, Zero Friction**: Pure vanilla ES6+, HTML5, and Tailwind CSS. Runs instantly in any modern web browser or through a static local file server.
-* **Modular Theme Engine**: Each template is completely isolated into its own pluggable component. Adding a custom theme requires zero modifications to the core engine.
-* **100% Client-Side Privacy**: No external backend or tracking database. All personal information, tokens, and projects remain strictly inside your browser's local memory.
-* **First-Class Arabic RTL Support**: Complete bidirectional mirroring (`dir="rtl"`) with automatic typographic cascades (Google Fonts *Cairo* and *Tajawal*).
-* **Security Researcher First**: Built-in support for Bug Bounty platforms (HackerOne, Bugcrowd, Intigriti), CVE badges, and security scorecards.
+* **3-Zone Developer Workbench**: Full-viewport precision shell featuring a Top Command Bar, Left Architectural Step Rail, Center Inspector / Form Editor, and Right Device Simulator Stage.
+* **Interactive Command Palette (`⌘K` / `Ctrl+K`)**: Instant search over navigation steps, theme switching, persona presets, and export actions.
+* **Strict Engineering Skills Curation**: All hosting providers and buzzwords (VPS, Vercel, Netlify, Cloudflare, etc.) removed in favor of authentic, verifiable engineering and security technologies across 7 categorized tabs.
+* **1-Click Native GitHub Sync & Auto-Deployer**: Direct fetch against GitHub REST API with zero external Octokit dependency.
+* **Zero Broken Tailwind Classes**: Handcrafted semantic design system with 100% WCAG AA contrast in both Dark (OLED Carbon) and Light (Warm Alabaster) modes.
+* **7 Elevated Pluggable Themes**: Instant preview theme switcher in the simulator titlebar allows testing all 7 themes from any step.
+* **First-Class Arabic RTL Cascade**: Seamless bidirectional mirroring (`dir="rtl"`) with typographic pairing (*Cairo*, *Plus Jakarta Sans*, *Space Grotesk*).
 
 ---
 
@@ -122,16 +111,27 @@ portfoliogen/
 ├── assets/
 │   └── banner.svg               # Vector brand graphic & SVG presentation
 ├── css/
-│   └── style.css                # Obsidian design system, glassmorphism & resets
+│   ├── tokens.css               # Core design tokens, dark OLED & light warm alabaster
+│   ├── components.css           # Semantic buttons, inputs, cards & modal components
+│   ├── studio.css               # 3-Zone Workbench layout, device simulator & command palette
+│   └── style.css                # Master aggregator, typography & RTL overrides
 ├── js/
-│   ├── app.js                   # Application lifecycle, keybindings & orchestration
+│   ├── app.js                   # Workbench lifecycle, command palette (⌘K) & keybindings
 │   ├── design-tokens.js         # Color palettes, typography & design system tokens
-│   ├── form.js                  # Reactive multi-step state machine & Event Bus
+│   ├── form.js                  # Master form coordinator & step glue
 │   ├── export.js                # ZIP, standalone HTML & JSON config generators
-│   ├── github.js                # Octokit GitHub Pages deployer & repo synchronizer
+│   ├── github.js                # Native GitHub REST API deployer & repo synchronizer
 │   ├── i18n.js                  # Bilingual translation dictionary (English & Arabic)
-│   ├── preview.js               # Sandboxed multi-viewport iframe renderer
-│   ├── utils.js                 # DOMPurify sanitizer, URI whitelist & icon mappings
+│   ├── preview.js               # Sandboxed live device simulator & quick theme switcher
+│   ├── utils.js                 # DOMPurify sanitizer, strict skills curation & icons
+│   ├── form/                    # Modular Form Steps Architecture
+│   │   ├── state.js             # Reactive FormState store, personas & scoring
+│   │   ├── step1-profile.js     # Step 1: Profile & Identity
+│   │   ├── step2-socials.js     # Step 2: Network & Channels (14 platforms)
+│   │   ├── step3-skills.js      # Step 3: Technical Arsenal (curated categories)
+│   │   ├── step4-projects.js    # Step 4: Projects, Experience, Education & Security
+│   │   ├── step5-theme.js       # Step 5: Themes, Palettes & Deployment Hub
+│   │   └── actions.js           # Form action handlers & event dispatchers
 │   ├── themes.js                # Core ThemeRegistry facade (backwards-compatible)
 │   └── themes/                  # Modular Individual Theme Components
 │       ├── registry.js          # Pluggable ThemeRegistry class & lifecycle hooks
