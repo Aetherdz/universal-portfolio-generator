@@ -23,6 +23,15 @@ const I18N = {
     'app.step4': { en: '04 Work & History', ar: '04 الأعمال والخبرة' },
     'app.step5': { en: '05 Theme & Ship', ar: '05 المظهر والنشر' },
 
+    'app.step1_short': { en: 'Identity', ar: 'الهوية' },
+    'app.step2_short': { en: 'Network', ar: 'التواصل' },
+    'app.step3_short': { en: 'Arsenal', ar: 'المهارات' },
+    'app.step4_short': { en: 'Work', ar: 'الأعمال' },
+    'app.step5_short': { en: 'Ship', ar: 'النشر' },
+
+    'mobile.editor': { en: 'Editor', ar: 'المحرر' },
+    'mobile.preview': { en: 'Preview', ar: 'المعاينة' },
+
     'form.step.profile': { en: 'Profile & Identity', ar: 'الملف الشخصي والهوية' },
     'form.step.profile_desc': {
       en: 'Define your core identity, avatar, primary engineering role, and contact coordinates.',

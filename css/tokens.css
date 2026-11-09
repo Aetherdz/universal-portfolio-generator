@@ -1,10 +1,55 @@
 /* ========================================================
    css/tokens.css — Design Tokens & Core Color System
    Universal Portfolio Studio — v3.8 Workbench Architecture
+   Strict Golden Ratio (φ = 1.61803398875) & Fibonacci Harmony
    WCAG AA Contrast Compliant (Dark OLED & Warm Alabaster)
    ======================================================== */
 
 :root {
+  /* === Golden Ratio (φ = 1.61803398875) & Fibonacci Constants === */
+  --phi: 1.61803398875;
+  --phi-inv: 0.61803398875;
+  --phi-comp: 0.38196601125;
+  --phi-sqrt: 1.27201964951;
+
+  /* === Fibonacci Spacing Scale === */
+  --space-1: 3px;
+  --space-2: 5px;
+  --space-3: 8px;
+  --space-4: 13px;
+  --space-5: 21px;
+  --space-6: 34px;
+  --space-7: 55px;
+  --space-8: 89px;
+  --space-9: 144px;
+  --space-10: 233px;
+
+  /* === Golden Border Radii Scale === */
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 13px;
+  --radius-lg: 21px;
+  --radius-xl: 34px;
+  --radius-pill: 9999px;
+
+  /* === Golden Ratio Typography Scale === */
+  --text-display: 2.058rem;  /* φ^1.5 ≈ 32.93px */
+  --text-h2: 1.618rem;       /* φ ≈ 25.89px */
+  --text-h3: 1.272rem;       /* √φ ≈ 20.35px */
+  --text-body: 1rem;         /* 16.0px */
+  --text-small: 0.786rem;    /* 1/√φ ≈ 12.58px */
+  --text-micro: 0.688rem;    /* 11.0px */
+
+  --lh-golden: 1.618;
+  --lh-heading: 1.272;
+  --lh-tight: 1.15;
+
+  /* === Golden Spatial Dimensions === */
+  --topbar-height: 55px;   /* var(--space-7) */
+  --rail-width: 233px;     /* var(--space-10) */
+  --input-height: 42px;    /* 26px * 1.618 ≈ 42px */
+  --btn-height: 34px;      /* var(--space-6) */
+
   /* === Canvas & Surface Tokens (Light Mode Default) === */
   --bg-canvas: #f8fafc;
   --bg-surface: #ffffff;
@@ -46,14 +91,6 @@
   --font-sans: 'Plus Jakarta Sans', 'Cairo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Space Grotesk', 'Cairo', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-  /* === Border Radii Scale === */
-  --radius-xs: 4px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-pill: 9999px;
 
   /* === Transitions === */
   --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);

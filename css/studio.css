@@ -28,19 +28,22 @@ html, body {
 
 /* ========================================================
    Zone 1: Top Command Bar (.wb-topbar)
+   Fibonacci Height: 55px (var(--topbar-height))
    ======================================================== */
 .wb-topbar {
-  height: 3.25rem;
-  min-height: 3.25rem;
+  height: var(--topbar-height);
+  min-height: var(--topbar-height);
+  max-height: var(--topbar-height);
   background: var(--bg-surface);
   border-bottom: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
-  gap: 1rem;
+  padding: 0 var(--space-5);
+  gap: var(--space-4);
   z-index: 50;
   position: relative;
+  box-sizing: border-box;
 }
 
 .wb-topbar-left {
@@ -209,29 +212,36 @@ html, body {
 
 /* ========================================================
    Workbench 3-Zone Workspace (.wb-main)
+   Strict Golden Ratio Grid: 233px Rail | 1fr Editor | 1.618fr Stage
    ======================================================== */
 .wb-main {
-  display: flex;
-  flex: 1;
-  height: calc(100vh - 3.25rem);
+  display: grid;
+  grid-template-columns: var(--rail-width) minmax(380px, 1fr) minmax(520px, 1.618fr);
+  height: calc(100vh - var(--topbar-height));
+  width: 100vw;
+  max-width: 100vw;
   overflow: hidden;
   position: relative;
+  box-sizing: border-box;
 }
 
 /* ========================================================
    Zone 2A: Left Architectural Step Rail (.wb-rail)
+   Fibonacci Dimension: 233px (144 + 89)
    ======================================================== */
 .wb-rail {
-  width: 240px;
-  min-width: 240px;
+  width: var(--rail-width);
+  min-width: var(--rail-width);
+  max-width: var(--rail-width);
   background: var(--bg-surface);
   border-right: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0.875rem 0.75rem;
+  padding: var(--space-4) var(--space-3);
   overflow-y: auto;
   z-index: 20;
+  box-sizing: border-box;
 }
 
 [dir="rtl"] .wb-rail {
@@ -378,25 +388,28 @@ html, body {
 
 /* ========================================================
    Zone 2B: Center Inspector / Form Editor (.wb-editor)
+   Golden Proportional Width: 1fr (38.2% of Content Split)
    ======================================================== */
 .wb-editor {
-  flex: 1;
+  min-width: 0;
   overflow-y: auto;
-  padding: 1.25rem 1.5rem 3rem;
+  padding: var(--space-5) var(--space-5) var(--space-8);
   background: var(--bg-canvas);
+  box-sizing: border-box;
 }
 
 .wb-editor-inner {
   max-width: 680px;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* ========================================================
    Zone 2C: Right Device Simulator Stage (.wb-stage)
+   Golden Proportional Width: 1.618fr (61.8% of Content Split)
    ======================================================== */
 .wb-stage {
-  flex: 1.25;
-  min-width: 440px;
+  min-width: 0;
   background: var(--bg-canvas);
   border-left: 1px solid var(--border-subtle);
   display: flex;
@@ -404,6 +417,7 @@ html, body {
   height: 100%;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 [dir="rtl"] .wb-stage {
@@ -718,6 +732,104 @@ html, body {
   margin-bottom: 1.25rem;
 }
 
+/* ========================================================
+   Mobile Golden Workspace Switcher Bar (.mobile-golden-bar)
+   ======================================================== */
+.mobile-golden-bar {
+  display: none;
+  height: 48px;
+  min-height: 48px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-4);
+  gap: var(--space-3);
+  z-index: 45;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.mobile-ws-switcher {
+  display: inline-flex;
+  background: var(--bg-surface-elevated);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.ws-seg-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--fg-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.ws-seg-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.35);
+}
+
+.mobile-step-strip {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.mobile-step-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.m-step-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--fg-muted);
+  font-family: var(--font-sans);
+  font-size: 0.688rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.m-step-pill span {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+}
+
+.m-step-pill.active {
+  background: var(--bg-surface);
+  border-color: var(--color-primary-light);
+  color: var(--color-primary-light);
+}
+
+.m-step-pill.done {
+  color: var(--accent-emerald);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
 /* Mobile Sticky Bottom Action Bar */
 .mobile-action-bar {
   display: none;
@@ -727,28 +839,102 @@ html, body {
   right: 0;
   background: var(--bg-surface);
   border-top: 1px solid var(--border-subtle);
-  padding: 0.625rem 1rem;
+  padding: 0.5rem 1rem;
   z-index: 40;
 }
 
-/* Responsive Media Queries */
+/* Responsive Media Queries (<= 1024px) */
 @media (max-width: 1024px) {
-  .wb-rail {
-    display: none;
-  }
-  .wb-stage {
-    display: none;
-    position: fixed;
-    inset: 3.25rem 0 0 0;
-    z-index: 60;
-  }
-  .wb-stage.open {
+  .mobile-golden-bar {
     display: flex;
   }
+
+  .wb-rail {
+    display: none !important;
+  }
+
+  .wb-topbar-center .wb-persona-strip {
+    display: none !important;
+  }
+
+  .wb-main {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--topbar-height) - 48px);
+    width: 100vw;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  /* Default on mobile: show editor, hide stage */
+  .wb-editor {
+    display: block !important;
+    flex: 1;
+    width: 100%;
+    padding: var(--space-4) var(--space-3) var(--space-8);
+    overflow-y: auto;
+  }
+
+  .wb-stage {
+    display: none !important;
+  }
+
+  /* Live Preview active mode */
+  body.mobile-preview-active .wb-editor {
+    display: none !important;
+  }
+
+  body.mobile-preview-active .wb-stage {
+    display: flex !important;
+    flex: 1;
+    width: 100%;
+    border-left: none;
+    border-right: none;
+  }
+
+  .simulator-viewport {
+    padding: var(--space-2);
+  }
+
+  .simulator-viewport iframe {
+    border-radius: var(--radius-sm);
+  }
+
   .mobile-action-bar {
     display: block;
   }
-  .wb-topbar-center .wb-persona-strip {
+}
+
+@media (max-width: 640px) {
+  .wb-topbar {
+    padding: 0 var(--space-3);
+  }
+
+  .wb-topbar-center {
+    display: none !important;
+  }
+
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .wb-brand-title {
+    font-size: 0.8125rem;
+  }
+
+  .wb-brand-version {
     display: none;
+  }
+
+  .score-pill {
+    display: none;
+  }
+
+  .m-step-pill small {
+    display: none;
+  }
+
+  .m-step-pill {
+    padding: 4px 6px;
   }
 }

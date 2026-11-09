@@ -85,12 +85,12 @@
           <span>0% Ready</span>
         </span>
 
-        <!-- Import / Export Config -->
-        <button type="button" class="btn btn-secondary btn-sm" onclick="importConfig()" title="Import Config JSON">
+        <!-- Import / Export Config (Desktop & Tablet) -->
+        <button type="button" class="btn btn-secondary btn-sm hide-on-mobile" onclick="importConfig()" title="Import Config JSON">
           <i class="fas fa-file-import"></i>
           <span class="hidden sm:inline">Import</span>
         </button>
-        <button type="button" class="btn btn-secondary btn-sm" onclick="exportConfig()" title="Export Config JSON">
+        <button type="button" class="btn btn-secondary btn-sm hide-on-mobile" onclick="exportConfig()" title="Export Config JSON">
           <i class="fas fa-file-export"></i>
           <span class="hidden sm:inline">Export</span>
         </button>
@@ -112,20 +112,33 @@
           <span>Ship</span>
         </button>
 
-        <!-- Mobile Live Preview Drawer Toggle -->
-        <button id="preview-toggle" class="btn btn-secondary btn-sm lg:hidden" title="Toggle Live Preview Drawer">
+        <!-- Mobile Live Preview Toggle in Topbar -->
+        <button id="preview-toggle" class="btn btn-secondary btn-sm lg:hidden" title="Toggle Live Preview" aria-label="Toggle preview">
           <i class="fas fa-eye text-accent"></i>
         </button>
       </div>
     </header>
 
-    <!-- Mobile Horizontal Stepper Strip (Shown on Small Displays) -->
-    <div class="mobile-stepper-strip" id="mobile-stepper">
-      <button type="button" class="mobile-step-pill active" data-step="1">01 Identity</button>
-      <button type="button" class="mobile-step-pill" data-step="2">02 Network</button>
-      <button type="button" class="mobile-step-pill" data-step="3">03 Arsenal</button>
-      <button type="button" class="mobile-step-pill" data-step="4">04 Work</button>
-      <button type="button" class="mobile-step-pill" data-step="5">05 Ship</button>
+    <!-- Mobile Golden Workspace Switcher & Step Strip (<= 1024px) -->
+    <div class="mobile-golden-bar" id="mobile-golden-bar">
+      <div class="mobile-ws-switcher" role="tablist" aria-label="Workspace View">
+        <button type="button" class="ws-seg-btn active" id="ws-btn-editor" onclick="toggleMobileWorkspace('editor')" role="tab" aria-selected="true">
+          <i class="fas fa-pen-nib"></i>
+          <span data-i18n="mobile.editor">Editor</span>
+        </button>
+        <button type="button" class="ws-seg-btn" id="ws-btn-preview" onclick="toggleMobileWorkspace('preview')" role="tab" aria-selected="false">
+          <i class="fas fa-eye"></i>
+          <span data-i18n="mobile.preview">Preview</span>
+        </button>
+      </div>
+
+      <nav class="mobile-step-strip" id="mobile-step-strip" aria-label="Step navigation">
+        <button type="button" class="m-step-pill active" data-step="1"><span>01</span> <small data-i18n="app.step1_short">Identity</small></button>
+        <button type="button" class="m-step-pill" data-step="2"><span>02</span> <small data-i18n="app.step2_short">Network</small></button>
+        <button type="button" class="m-step-pill" data-step="3"><span>03</span> <small data-i18n="app.step3_short">Arsenal</small></button>
+        <button type="button" class="m-step-pill" data-step="4"><span>04</span> <small data-i18n="app.step4_short">Work</small></button>
+        <button type="button" class="m-step-pill" data-step="5"><span>05</span> <small data-i18n="app.step5_short">Ship</small></button>
+      </nav>
     </div>
 
     <!-- 3-Zone Developer Workbench Main -->

@@ -30,7 +30,7 @@ function updateStepIndicator() {
   const cur = FormState.currentStep;
 
   // Rail tabs & Stepper buttons sync
-  document.querySelectorAll('.wb-rail-tab, .step-tab, .step-dot').forEach(tab => {
+  document.querySelectorAll('.wb-rail-tab, .step-tab, .step-dot, .mobile-step-pill, .m-step-pill').forEach(tab => {
     const s = parseInt(tab.dataset.step, 10);
     tab.classList.toggle('active', s === cur);
     tab.classList.toggle('done', s < cur);

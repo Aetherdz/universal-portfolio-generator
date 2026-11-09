@@ -160,6 +160,30 @@ function toggleStudioTheme() {
   }
 }
 
+// === Mobile Golden Ratio Workspace Switcher ===
+window.toggleMobileWorkspace = function(mode) {
+  const isPreview = mode === 'preview' || (mode === 'toggle' && !document.body.classList.contains('mobile-preview-active'));
+  document.body.classList.toggle('mobile-preview-active', isPreview);
+
+  const btnEditor = document.getElementById('ws-btn-editor');
+  const btnPreview = document.getElementById('ws-btn-preview');
+  if (btnEditor && btnPreview) {
+    btnEditor.classList.toggle('active', !isPreview);
+    btnEditor.setAttribute('aria-selected', !isPreview ? 'true' : 'false');
+    btnPreview.classList.toggle('active', isPreview);
+    btnPreview.setAttribute('aria-selected', isPreview ? 'true' : 'false');
+  }
+
+  const mobilePreviewBtn = document.getElementById('mobile-btn-preview');
+  if (mobilePreviewBtn) {
+    mobilePreviewBtn.classList.toggle('active', isPreview);
+  }
+
+  if (isPreview && typeof renderPreview === 'function') {
+    renderPreview();
+  }
+};
+
 // === Master Initialization ===
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize Core Form State & Storage
@@ -214,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Wire Rail Tabs & Mobile Stepper Pills
-  document.querySelectorAll('.wb-rail-tab, .mobile-step-pill').forEach(btn => {
+  document.querySelectorAll('.wb-rail-tab, .mobile-step-pill, .m-step-pill').forEach(btn => {
     btn.addEventListener('click', function() {
       const step = this.dataset.step;
       if (step && typeof goToStep === 'function') {
@@ -223,22 +247,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Mobile Live Preview Drawer Toggle
+  // Mobile Live Preview Drawer & Workspace Switcher Wire
   const previewToggle = document.getElementById('preview-toggle');
-  const previewPanel = document.getElementById('preview-panel');
-  if (previewToggle && previewPanel) {
+  if (previewToggle) {
     previewToggle.addEventListener('click', () => {
-      previewPanel.classList.toggle('open');
-      if (typeof renderPreview === 'function') renderPreview();
+      toggleMobileWorkspace('toggle');
     });
   }
 
   // Mobile Bottom-Bar Preview Button
   const mobilePreviewBtn = document.getElementById('mobile-btn-preview');
-  if (mobilePreviewBtn && previewPanel) {
+  if (mobilePreviewBtn) {
     mobilePreviewBtn.addEventListener('click', () => {
-      previewPanel.classList.toggle('open');
-      if (typeof renderPreview === 'function') renderPreview();
+      toggleMobileWorkspace('toggle');
+    });
+  }
+
+  // Preview Close (Mobile Simulator Bar)
+  const previewClose = document.getElementById('preview-close');
+  if (previewClose) {
+    previewClose.addEventListener('click', () => {
+      toggleMobileWorkspace('editor');
     });
   }
 
@@ -294,9 +323,13 @@ document.addEventListener('DOMContentLoaded', function() {
         tipModal.classList.add('hidden');
         tipModal.style.display = 'none';
       }
-      // Close mobile preview drawer
+      // Close mobile preview drawer / workspace
+      const previewPanel = document.getElementById('preview-panel');
       if (previewPanel && previewPanel.classList.contains('open')) {
         previewPanel.classList.remove('open');
+      }
+      if (document.body.classList.contains('mobile-preview-active')) {
+        toggleMobileWorkspace('editor');
       }
     }
   });
